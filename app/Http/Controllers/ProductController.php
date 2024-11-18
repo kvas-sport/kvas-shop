@@ -24,12 +24,28 @@ class ProductController extends Controller
             'amount' => 'required',
             'cost' => 'required',
             'image_url' => 'required',
-            'category_id' => 'required',
+            'category_id' => 'required|array',
+            'category_id.*' => 'exists:categories,id'
         ]);
 
-        Product::create($data);
+        $product = Product::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'amount' => $data['amount'],
+            'cost' => $data['cost'],
+            'image_url' => $data['image_url'],
+        ]);
+
+        $product->categories()->attach($data['category_id']);
 
         return redirect()->route('products.index');
+    }
+
+    public function update(): RedirectResponse
+    {
+        $data = request()->validate([
+
+        ]);
     }
 
     public function destroy(Product $product): RedirectResponse
