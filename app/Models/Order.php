@@ -20,4 +20,9 @@ class Order extends Model
     {
         return $this->belongsToMany(Category::class);
     }
+
+    public function orderProducts(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class,'order_products');
+    }
 }
