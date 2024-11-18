@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-class RegisterController extends Controller
+class AuthController extends Controller
 {
     public function create()
     {
@@ -29,5 +29,27 @@ class RegisterController extends Controller
         ]);
         Auth::login($user);
         return redirect('/');
+    }
+
+    public function create_login()
+    {
+        return view('auth.login');
+    }
+
+    public function store_login(Request $request)
+    {
+        $credentitals = $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required'
+        ]);
+        if(! Auth::attempt($credentitals)){
+            return back()
+                ->withInput()
+                ->withErrors([
+                    'email'=>"Не верный логин или пароль"
+                ]);
+        }
+        return redirect()->intended('/');
+
     }
 }
