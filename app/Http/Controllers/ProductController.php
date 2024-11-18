@@ -44,8 +44,26 @@ class ProductController extends Controller
     public function update(): RedirectResponse
     {
         $data = request()->validate([
-
+            'name' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'cost' => 'required',
+            'image_url' => 'required',
+            'category_id' => 'required|array',
+            'category_id.*' => 'exists:categories,id'
         ]);
+
+        $product = Product::update([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'amount' => $data['amount'],
+            'cost' => $data['cost'],
+            'image_url' => $data['image_url'],
+        ]);
+
+        $product->categories()->sync($data['category_id']);
+
+        return redirect()->back();
     }
 
     public function destroy(Product $product): RedirectResponse
