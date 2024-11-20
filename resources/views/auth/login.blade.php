@@ -1,9 +1,9 @@
-<div class="registration-cssave">
+<div class="registration">
     <div class="switcher">
         <a href="{{route('register')}}"class="btn btn-secondary switch-form" data-switch="register">Регистрация</a>
     </div>
 
-    <form 
+    <form
     action="{{route('login') }}"
     method="post"
     class="loginForm" id="loginForm"
