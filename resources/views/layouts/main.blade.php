@@ -19,7 +19,7 @@
         <div class="header-content">
             <h1>Интернет-магазин CASUMI</h1>
             <div class="wrapper__header">
-                <input class="search-input" type="search" placeholder="Поиск">
+                <div class="wrapper__search-input"><input class="search-input" type="text" placeholder="Поиск"></div>
             </div>
             <div class="social-logoes">
                 <a href=""><img class="social-logo" src="./assets/email.svg" alt="email"></a>
@@ -55,8 +55,8 @@
 </main>
 <footer>
     <div class="subscribe-block">
-        <img class="footer-image" src="./assets/footer-bg.png" alt="footer-bg-image">
-        <div class="container">
+        <div class="wrapper__subscribe-block">
+            <img class="footer-image" src="./assets/footer-bg.png" alt="footer-bg-image">
             <div class="footer-input-block">
                 <div>
                     <h2>Подпишись на нашу рассылку</h2>
@@ -66,6 +66,53 @@
                     <p>Подписывайся на рассылку и получай уведомления на акции</p>
                     <button>Подписаться</button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="footer-nav">
+            <div class="footer-nav-items">
+                <div class="footer-nav-item footer-nav-logo-block">
+                    <h3>Интернет-магазин CASUMI</h3>
+                    <ul>
+                        <li>Магазин спортивной одежды, инвентаря, питания с доставкой по всей стране</li>
+                    </ul>
+                </div>
+                <div class="footer-nav-item">
+                    <h4>Категории</h4>
+                    <ul>
+                        <li><a href="">Спортивная одежда</a></li>
+                        <li><a href="">Питание</a></li>
+                        <li><a href="">Инвентарь</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-item">
+                    <h4>Как оформить заказ</h4>
+                    <ul>
+                        <li><a href="">Оплата</a></li>
+                        <li><a href="">Доставка</a></li>
+                        <li><a href="">Возврат</a></li>
+                        <li><a href="">Отзывы</a></li>
+                        <li><a href="">Скидки</a></li>
+                    </ul>
+                </div>
+                <div class="footer-nav-item footer-nav-contact-block">
+                    <h4>Контакты</h4>
+                    <ul>
+                        <li><a href="">7 (567) 439-82-34</a></li>
+                        <li><a href="">E-mail: rumassa13@gmail.com</a></li>
+                        <li><a href="">Telegram: @consultant_rumassa (составление курсов и т.д.)</a></li>
+                        <li><a href="">Telegram: @Rumassa</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="wrapper__footer-bottom">
+                <span>ⓒ copywriting 2022</span>
+                <span>Политика конфиденциальности</span>
             </div>
         </div>
     </div>
