@@ -13,4 +13,6 @@ class Category extends Model
     {
         $this->hasMany(Product::class);
     }
+
+
 }

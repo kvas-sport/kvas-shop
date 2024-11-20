@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Order extends Model
 {
@@ -13,5 +14,15 @@ class Order extends Model
     public function user(): BelongsTo
     {
         $this->belongsTo(User::class);
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function orderProducts(): BelongsToMany
+    {
+        return $this->belongsToMany(Product::class,'order_products');
     }
 }
