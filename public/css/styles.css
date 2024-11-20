@@ -4,7 +4,9 @@
 
     --border: #DFDFDF;
 
-    --max-widht-container: 1380px
+    --max-widht-container: 1380px;
+
+    --gotica: "Gothic A1", sans-serif; /*Добавил Кирилл*/
 }
 
 html {
@@ -150,4 +152,181 @@ body {
     max-width: 563px;
     width: 100%;
     padding: 12px;
+}
+
+
+
+/*ЭТО ГОВНО ДЕЛАЛ КИРИЛЛ*/
+/*CATALOG MAN*/
+.catalog>h1{
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 70px;
+    margin: 30px 0px;
+}
+
+.wrapper__catalog {
+    max-width: 681px;
+    width: 100%;
+    padding: 17px 0px;
+    position: relative;
+}
+
+.search-container_catalog {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+}
+
+.search-input_catalog {
+    width: 100%;
+    font-size: 14px;
+    border: 1px solid var(--border);
+    padding: 17px 20px;
+
+}
+
+/*В наличии или нет*/
+.availability-filter {
+    margin-top: 50px;
+    background-color: #4C95EC; /*Добавить этот цвет в переменную?*/
+    color:white;
+    max-width: 110px;
+}
+.filt-opt{
+    padding: 6px 0px;
+    font-family: var(--gotica);
+    font-size: 14px;
+    display: flex; 
+    
+
+}
+.filt-opt input[type="checkbox" i] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px solid #4C95EC;
+    display: inline-block;
+    position: relative;
+}
+
+.filt-opt input[type="checkbox" i]:checked {
+    background-color: #4C95EC;
+}
+
+.filt-opt input[type="checkbox" i]:checked::after {
+    content: '\2714';
+    font-size: 12px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*Группа картинок тут должна быть, но пока 1*/
+.image_part{
+    display: flex;
+    margin: 0 auto;
+}
+
+/*Подборка товаров*/
+
+.catalog>h2{
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 65px;
+    margin: 30px 0px;
+}
+
+.product-cards {
+
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.product-image img {
+    max-width: 420px;
+    height: auto;
+}
+
+.product-info {
+    font-family: var(--gotica);
+}
+.name_card{
+    font-family: var(--gotica);
+}
+
+.product-buttons {
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    max-width: 420px;
+    margin-top: 15px;
+}
+.more-info{
+    color:var(--text-color);
+    padding: 15px 10px;
+    background-color: transparent;
+    border: 1px solid #ABABAB;
+    cursor: pointer;
+}
+.add-to-cart{
+    padding: 15px 10px;
+    color: white;
+    background-color: #ABABAB;
+    border: none;
+    box-shadow: 0px 10px 22px 0px #A8865E4D;
+
+}
+/* варинат ховера */
+/* .more-info:hover {
+    background-color: #ABABAB;
+    color: white;
+    box-shadow: 0px 10px 22px 0px #A8865E4D;
+}
+.add-to-cart:hover{
+    background-color: transparent;
+    border: 1px solid #ABABAB;
+    color:var(--text-color);
+    box-shadow: none
+} */
+
+.product-buttons button:hover{
+    box-shadow: none;
+    background-color: #6c6c6c;
+    color: white;
+}
+.product-card{
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
+}
+
+.open-more{
+    display: flex;
+    margin: 0 auto;
+    margin-bottom: 61px;
+    margin-top: 61px;
+}
+
+.open-more:hover{
+    box-shadow: none;
+    background-color: #6c6c6c;
+    color: white;
 }
