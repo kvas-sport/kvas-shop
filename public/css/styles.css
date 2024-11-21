@@ -50,7 +50,7 @@ ul, ol {
     margin-bottom: 36px;
 }
 
-.header-content>h1 {
+.header-content > h1 {
     font-size: 18px;
     font-weight: 600;
     max-width: 166px;
@@ -173,6 +173,10 @@ ul, ol {
 
 
 /* FOOTER */
+footer {
+    margin-top: 85px;
+}
+
 .subscribe-block {
     background-color: var(--primary);
 }
@@ -189,6 +193,7 @@ ul, ol {
 .footer-image {
     display: block;
     max-width: 656px;
+    width: 100%;
 }
 
 .footer-input-block {
@@ -319,4 +324,61 @@ ul, ol {
     display: flex;
     justify-content: space-between;
     padding: 20px 0 30px;
+}
+
+
+
+
+/* Registration & Login */
+.registerForm h3, .loginForm h3 {
+    width: 100%;
+    font-size: 70px;
+    text-align: center;
+}
+
+.switcher {
+    display: flex;
+    gap: 13px;
+    align-self: start;
+}
+
+.switcher span, .switcher a {
+    color: #828282;
+    font-size: 24px;
+}
+
+.registerForm, .loginForm, .form-group {
+    max-width: 511px;
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    margin: 0 auto;
+}
+
+.form-group {
+    gap: 25px;
+    margin: 0;
+}
+
+.form-group label {
+    font-size: 32px;
+}
+
+.form-group input {
+    width: 94%;
+    font-size: 18px;
+    padding: 19px 15px;
+}
+
+.form-group button {
+    color: #ffffff;
+    border: none;
+    background-color: var(--primary);
+    padding: 15px 32px;
+    margin: 0 auto;
+}
+
+.form-border-bottom {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 50px;
 }
