@@ -5,11 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Favorite extends Model
+class Cart extends Model
 {
     protected $fillable = ['user_id', 'product_id'];
-
-    protected $table = "favorites";
 
     public function product(): BelongsTo
     {

@@ -2,6 +2,8 @@
 @section('content')
     <h3>Избранные</h3>
     @foreach($favorites as $favorite)
-        {{ $favorite->product->name }}
+        <div>
+            {{ $favorite->product->name }}
+        </div>
     @endforeach
 @endsection
