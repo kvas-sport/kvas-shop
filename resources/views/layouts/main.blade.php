@@ -22,8 +22,8 @@
                 <div class="wrapper__search-input"><input class="search-input" type="text" placeholder="Поиск"></div>
             </div>
             <div class="social-logoes">
-                <a href=""><img class="social-logo" src="./assets/email.svg" alt="email"></a>
-                <a href=""><img class="social-logo" src="./assets/telegram.svg" alt="telegram"></a>
+                <a href=""><img class="social-logo" src="{{ asset('assets/email.svg') }}" alt="email"></a>
+                <a href=""><img class="social-logo" src={{ asset("assets/telegram.svg") }} alt="telegram"></a>
             </div>
         </div>
     </div>
@@ -31,17 +31,17 @@
         <div class="container">
             <div class="nav-items">
                 <div class="wrapper__nav-items">
-                    <a href="" class="nav-item catalog-button">Каталог</a>
+                    <a href="{{ route('products.index') }}" class="nav-item catalog-button">Каталог</a>
                     <a href="" class="nav-item">Спортивная одежда</a>
                     <a href="" class="nav-item">Инвентарь</a>
                     <a href="" class="nav-item">Питание</a>
                 </div>
                 <div class="nav-buttons">
-                    <a href="" class="wrapper__button-logo"><img class="button-logo" src="./assets/profile.svg"
+                    <a href="{{ route('users.profile') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/profile.svg") }}
                                                                  alt="profile"></a>
-                    <a href="" class="wrapper__button-logo"><img class="button-logo" src="./assets/favorities.svg"
+                    <a href="{{ route('favorites.index') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/favorities.svg") }}
                                                                  alt="profile"></a>
-                    <a href="" class="wrapper__button-logo"><img class="button-logo" src="./assets/cart.svg"
+                    <a href="/cart" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/cart.svg") }}
                                                                  alt="profile"></a>
                 </div>
             </div>
@@ -56,7 +56,7 @@
 <footer>
     <div class="subscribe-block">
         <div class="wrapper__subscribe-block">
-            <img class="footer-image" src="./assets/footer-bg.png" alt="footer-bg-image">
+            <img class="footer-image" src={{ asset("assets/footer-bg.png") }} alt="footer-bg-image">
             <div class="footer-input-block">
                 <div>
                     <h2>Подпишись на нашу рассылку</h2>

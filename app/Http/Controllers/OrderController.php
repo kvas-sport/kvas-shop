@@ -40,18 +40,6 @@ class OrderController extends Controller
         return redirect()->route('orders.index');
     }
 
-    public function addFavorites(User $user): RedirectResponse
-    {
-        $data = request()->validate([
-            'user_id' => 'required|integer|exists:users,id',
-            'product_id' => 'required|integer|exists:products,id',
-        ]);
-
-        $user->favorities()->syncWithoutDetaching($data);
-
-        return redirect()->route('favorites.index');
-    }
-
     public function destroy(Order $order): RedirectResponse
     {
         $order->delete();

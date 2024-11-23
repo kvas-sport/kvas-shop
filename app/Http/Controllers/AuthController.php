@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Auth;
+use http\Env\Response;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -50,6 +52,12 @@ class AuthController extends Controller
                 ]);
         }
         return redirect()->intended('/');
+    }
 
+    public function logout(): RedirectResponse
+    {
+        Auth::logout();
+
+        return redirect()->route('login');
     }
 }
