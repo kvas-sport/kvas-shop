@@ -116,6 +116,7 @@
             </div>
         </div>
     </div>
+    @yield('scripts')
 </footer>
 </body>
 </html>

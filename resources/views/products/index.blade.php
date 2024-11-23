@@ -19,94 +19,34 @@
         </div>
         <h2>Подборка</h2>
         <div class="product-cards">
-            <div class="product-card">
-                <div class="product-image">
-                        <img src="{{asset('assets/image 34.jpg')}}" alt="Продукт">
+            @foreach($products as $product)
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="{{asset($product->image_url)}}" alt="Продукт">
                     </div>
                     <div class="product-info">
-                        <h3 class="name_card">Metha 10, 10mg/caps, 100caps</h3>
-                        <span class="cost">100.000 ₽</span>
+                        <h3 class="name_card">{{ $product->name }}</h3>
+                        <span class="cost">{{ $product->cost }} ₽</span>
                     </div>
                     <div class="product-buttons">
-                        <button class="add-to-cart">В корзину</button>
-                        <button class="more-info">Подробнее</button>
+                        <form action="{{ route('carts.store') }}" method="POST">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" value="{{ Auth::id() }}" name="user_id">
+                            <input type="hidden" value="{{ $product->id }}" name="product_id">
+                            <button type="submit" class="add-to-cart" value="1">В корзину</button>
+                        </form>
+                        <a href="{{ route('products.show', $product->id) }}" class="more-info">Подробнее</a>
+                    </div>
                 </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                        <img src="{{asset('assets/image 34.jpg')}}" alt="Продукт">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="name_card">Metha 10, 10mg/caps, 100caps</h3>
-                        <span class="cost">100.000 ₽</span>
-                    </div>
-                    <div class="product-buttons">
-                        <button class="add-to-cart">В корзину</button>
-                        <button class="more-info">Подробнее</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                        <img src="{{asset('assets/image 34.jpg')}}" alt="Продукт">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="name_card">Metha 10, 10mg/caps, 100caps</h3>
-                        <span class="cost">100.000 ₽</span>
-                    </div>
-                    <div class="product-buttons">
-                        <button class="add-to-cart">В корзину</button>
-                        <button class="more-info">Подробнее</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                        <img src="{{asset('assets/image 34.jpg')}}" alt="Продукт">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="name_card">Metha 10, 10mg/caps, 100caps</h3>
-                        <span class="cost">100.000 ₽</span>
-                    </div>
-                    <div class="product-buttons">
-                        <button class="add-to-cart">В корзину</button>
-                        <button class="more-info">Подробнее</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                        <img src="{{asset('assets/image 34.jpg')}}" alt="Продукт">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="name_card">Metha 10, 10mg/caps, 100caps</h3>
-                        <span class="cost">100.000 ₽</span>
-                    </div>
-                    <div class="product-buttons">
-                        <button class="add-to-cart">В корзину</button>
-                        <button class="more-info">Подробнее</button>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-image">
-                        <img src="{{asset('assets/image 34.jpg')}}" alt="Продукт">
-                    </div>
-                    <div class="product-info">
-                        <h3 class="name_card">Metha 10, 10mg/caps, 100caps</h3>
-                        <span class="cost">100.000 ₽</span>
-                    </div>
-                    <div class="product-buttons">
-                        <button class="add-to-cart">В корзину</button>
-                        <button class="more-info">Подробнее</button>
-                </div>
-            </div>
+            @endforeach
         </div>
         <button class="add-to-cart open-more">
-                Открыть еще
-            </button>
-        <!-- КАРТОЧКИ БЕЗ БЭКА -->
-
-
-        <!-- @foreach($products as $product)
-            <h2>{{ $product->name }}</h2>
-            <p>{{ $product->description }}</p>
-        @endforeach -->
+            Открыть еще
+        </button>
     </section>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('scripts/carts.js') }}"></script>
 @endsection
