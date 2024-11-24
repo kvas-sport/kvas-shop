@@ -48,5 +48,5 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('scripts/carts.js') }}"></script>
+    <script src="{{ asset('scripts/cart.js') }}"></script>
 @endsection
