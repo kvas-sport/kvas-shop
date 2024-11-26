@@ -6,7 +6,6 @@ use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
 class ProductController extends Controller
 {
     public function index(): View
@@ -77,4 +76,5 @@ class ProductController extends Controller
 
         return redirect()->route('products.index');
     }
+
 }
