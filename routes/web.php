@@ -25,6 +25,7 @@ Route::get('/cart', [CartController::class, 'index'])->name('carts.index');
 Route::post('/cart', [CartController::class, 'store'])->name('carts.store');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
+Route::get('/admin', [UserController::class, 'admin'])->name('users.admin');
 
 
 #Сделал - Кирилл. Роуты на регистрацию

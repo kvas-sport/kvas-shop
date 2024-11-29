@@ -17,7 +17,9 @@ class ProductController extends Controller
 
     public function show(Product $product): View
     {
-        return view('products.show', compact('product'));
+        $populars = Product::all();
+
+        return view('products.show', compact('product'), compact('populars'));
     }
 
     public function store(): RedirectResponse

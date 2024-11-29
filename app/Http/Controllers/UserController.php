@@ -11,4 +11,9 @@ class UserController extends Controller
     {
         return view('users.profile');
     }
+
+    public function admin(): View
+    {
+        return view('users.admin');
+    }
 }
