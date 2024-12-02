@@ -1,13 +1,15 @@
 @extends('layouts.main')
 @section('content')
-<section class="carts">
-    <h3>Корзина</h3>
+    <section class="carts">
+        <h3>Корзина</h3>
         @foreach($products as $product)
             <div class="carts-option-card">
                 <div class="order">
-                    <div class="delete-from-carts">
-                            <img src="{{asset('assets/close (4) 2.svg')}}" alt="Продукт">
-                    </div>
+                    <form action="{{ route('carts.destroy', $product->id) }}" method="POST" class="delete-from-carts">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"><img src="{{asset('assets/close (4) 2.svg')}}" alt="Продукт"></button>
+                    </form>
 
                     <div class="product-image">
                         <img src="{{asset($product->product->image_url)}}" alt="Продукт">
@@ -36,11 +38,11 @@
                         </div>
                     </div>
 
-                    <div class="sum-order">        
+                    <div class="sum-order">
                         <span class="cost">{{ $product->product->cost }} ₽</span>
                     </div>
                 </div>
-
+                @endforeach
                 <div class="order-info-fin">
                     <h3>Сумма заказов</h3>
                     <div class="cart-bcg">
@@ -78,8 +80,7 @@
                     </div>
                 </div>
             </div>
-        @endforeach
-</section>
+    </section>
 @endsection
 @section('scripts')
     <script src="{{ asset('scripts/count-catrs.js') }}"></script>

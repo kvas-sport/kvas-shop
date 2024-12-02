@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class CartController extends Controller
@@ -27,9 +28,15 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function destroy(Cart $Cart): RedirectResponse
+    public function destroy(Cart $cart): RedirectResponse
     {
-        $Cart->delete();
+        $user = Auth::user();
+
+        if ($user->id !== $cart->user_id) {
+            return redirect()->back();
+        }
+
+        $cart->delete();
 
         return redirect()->route('carts.index');
     }
