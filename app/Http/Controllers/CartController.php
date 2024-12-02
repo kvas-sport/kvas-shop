@@ -24,7 +24,7 @@ class CartController extends Controller
 
         Cart::create($data);
 
-        return redirect()->route('carts.index');
+        return redirect()->back();
     }
 
     public function destroy(Cart $Cart): RedirectResponse

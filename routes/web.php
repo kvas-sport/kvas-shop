@@ -16,6 +16,8 @@ Route::get('/', function () {
 Route::get('/catalog', [ProductController::class, 'index'])->name('products.index');
 Route::get('/catalog/{product}', [ProductController::class, 'show'])->name('products.show');
 
+Route::post('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
@@ -24,8 +26,8 @@ Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites
 Route::get('/cart', [CartController::class, 'index'])->name('carts.index');
 Route::post('/cart', [CartController::class, 'store'])->name('carts.store');
 
-Route::get('/profile', [UserController::class, 'profile'])->name('users.profile');
-Route::get('/admin', [UserController::class, 'admin'])->name('users.admin');
+Route::get('/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
+Route::get('/admin', [UserController::class, 'admin'])->name('users.admin')->middleware('admin');
 
 
 #Сделал - Кирилл. Роуты на регистрацию

@@ -49,8 +49,9 @@
 
             <div class="size-group">
                 <p>Выберите размер RUS EUR US Таблица размеров</p>
-                <form class="size-form">
+                <form action="{{ route('carts.store') }}" method="POST" class="size-form">
                     @csrf
+                    @method('POST')
                     <div class="size-buttons">
                         <button type="button" class="size-button" data-size="40">40-42</button>
                         <button type="button" class="size-button" data-size="44">44</button>
@@ -58,6 +59,8 @@
                         <button type="button" class="size-button" data-size="48">48</button>
                     </div>
                     <input type="hidden" name="selected_size" id="selected_size">
+                    <input type="hidden" value="{{ Auth::id() }}" name="user_id">
+                    <input type="hidden" value="{{ $product->id }}" name="product_id">
                     <button type="submit" class="add-to-cart add-show" value="1">В корзину</button>
                 </form>
             </div>

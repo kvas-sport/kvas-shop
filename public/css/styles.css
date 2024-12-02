@@ -52,11 +52,16 @@ ul, ol {
     margin-bottom: 36px;
 }
 
-.header-content > h1 {
+.header-content>h1 {
+    max-width: 166px;
     font-size: 18px;
     font-weight: 600;
-    max-width: 166px;
     margin-right: 10px;
+}
+
+.header-content>h1>a {
+    color: black;
+    text-decoration: none;
 }
 
 .header-content {
@@ -667,3 +672,469 @@ footer {
     font-size: 20px;
 }
 
+
+/* Admin panel */
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: start;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.table-description__admin>p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -moz-box;
+    -moz-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    box-orient: vertical;
+}
+
+.table-description__admin>textarea {
+    width: 100%;
+}
+
+th button {
+    width: 100%;
+}
+
+.hidden-row {
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#catalog {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+#catalog h2 {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 95px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+.catalog-slider {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+
+.slider-item {
+    width: 330px;
+    min-height: 540px;
+    border: 1px solid #ABABAB;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.card img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card img:hover {
+    transform: scale(1.05);
+}
+
+.button-details {
+    width: 282px;
+    height: 52px;
+    background-color: #fff;
+    border: 1px solid #ABABAB;
+    border-radius: 3px 0 0 3px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.button-details:hover {
+    background-color: #ABABAB;
+}
+
+.slider-item .button-details {
+    width: 282px;
+    height: 52px;
+    background-color: #fff;
+    border: 1px solid #ABABAB;
+    border-radius: 3px 0 0 3px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.slider-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.slider-pagination span {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.slider-pagination span.active {
+    background-color: #007bff;
+}
+.decorative-element {
+    width: 1931px;
+    height: 1px;
+    margin-top: 20px;
+    background-color: #E6E6E6;
+    margin-left: -11px;
+    margin-bottom: 35px;
+}
+
+#clothing-categories {
+    width: 100%;
+    padding-bottom: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    margin-top: 150px;
+}
+
+#clothing-categories h2 {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-size: 55px;
+    font-weight: 800;
+    line-height: 95px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-bottom: 20px;
+}
+
+.category-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.category-item {
+    width: 429px;
+    height: 779px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-item img {
+    width: 100%;
+    height: 572.52px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.button-details {
+    width: 357.4px;
+    height: 60.93px;
+    border: 1px solid #ABABAB;
+    border-radius: 3px;
+    background-color: white;
+    cursor: pointer;
+
+}
+
+#reviews {
+    width: 100%;
+    margin-top: 150px;
+}
+
+#reviews h2 {
+    font-family: 'Abhaya Libre ExtraBold';
+    font-size: 50px;
+    font-weight: 800;
+    line-height: 95px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+}
+
+.review-grid {
+    display: flex;
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+    border: 1px solid #D8D8D8;
+    box-sizing: border-box;
+}
+
+.review-item {
+    width: 460px;
+    height: 319px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+
+.review-item img {
+    margin-left: 33px;
+    width: 73px;
+    height: 73px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 28px
+}
+
+.review-item h3 {
+    margin-bottom: 5px;
+}
+
+.review-item p{
+    flex-grow: 1;
+}
+
+.review-text h3 {
+    font-family: 'Gothic A1';
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 33px;
+
+}
+
+.review-text p {
+    font-family: 'Gothic A1';
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-left: 33px;
+
+}
+
+.read-more {
+    display: block;
+    margin-top: 10px;
+    text-decoration: underline;
+    color: #black;
+    margin-left: 33px;
+
+}
+
+#actions {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    margin-top: 150px;
+}
+
+#actions h2 {
+    width: 987px;
+    height: 89px;
+    font-family: 'Abhaya Libre ExtraBold';
+    font-size: 64px;
+    font-weight: 800;
+    line-height: 95px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    margin-left: 265px;
+    margin-bottom: 20px;
+}
+
+.actions-slider {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    gap: 20px;
+}
+
+.action-item {
+    width: 330px;
+    min-height: 450px;
+    border: 1px solid #ABABAB;
+}
+
+.action-card {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.action-card img {
+    width: 100%;
+    height: 243px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.action-card .action-details {
+    width: 282px;
+    height: 52px;
+    background-color: #fff;
+    border: 1px solid #ABABAB;
+    border-radius: 3px 0 0 3px;
+    padding: 10px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.action-item .action-details {
+
+
+}
+
+.actions-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+}
+
+.actions-pagination span {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.actions-pagination span.active {
+    background-color: #007bff;
+}
+
+.decorative-line {
+    width: 1931px;
+    height: 1px;
+    margin-top: 20px;
+    background-color: #E6E6E6;
+    margin-left: -11px;
+    margin-bottom: 35px;
+}
+
+#newsletter-signup {
+    background-color: #ABABAB;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    margin-top: 150px;
+
+}
+
+.newsletter-image {
+    width: 656px;
+    height: 390px;
+    overflow: hidden;
+    margin-left: 1264px
+}
+
+.newsletter-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: multiply;
+}
+
+footer {
+    background-color: #fff;
+    padding: 30px 0;
+    color: #333;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+    padding: 0 20px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column li {
+    margin-bottom: 5px;
+}
+
+.footer-column a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    text-decoration: underline;
+}
+
+.decorative-line {
+    width: 1931px;
+    margin: 0 auto;
+    border-bottom: 1px solid #E4E4E4;
+}

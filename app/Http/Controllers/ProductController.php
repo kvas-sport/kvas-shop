@@ -30,8 +30,7 @@ class ProductController extends Controller
             'amount' => 'required',
             'cost' => 'required',
             'image_url' => 'required',
-            'category_id' => 'required|array',
-            'category_id.*' => 'exists:categories,id'
+            'category_id' => 'required',
         ]);
 
         $product = Product::create([
@@ -55,8 +54,7 @@ class ProductController extends Controller
             'amount' => 'required',
             'cost' => 'required',
             'image_url' => 'required',
-            'category_id' => 'required|array',
-            'category_id.*' => 'exists:categories,id'
+            'category_id' => 'required',
         ]);
 
         $product = Product::update([

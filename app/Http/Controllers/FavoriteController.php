@@ -27,7 +27,7 @@ class FavoriteController extends Controller
 
         Favorite::create($data);
 
-        return redirect()->route('favorites.index');
+        return redirect()->back();
     }
 
     public function destroy(Favorite $favorite): RedirectResponse
