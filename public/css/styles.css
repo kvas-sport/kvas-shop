@@ -629,8 +629,16 @@ footer {
 .size-group {
     margin-bottom: 20px;
 }
-
-.size-button {
+.size-radios{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.form_radio_btn label {
+    display:flex;
+    justify-content: center;
     width: 150px;
     padding: 15px 46px;
     border: 1px solid var(--primary);
@@ -642,16 +650,21 @@ footer {
     font-size: 15px;
 }
 
-.size-button:hover {
+.form_radio_btn label:hover {
     background-color: #e0e0e0;
 }
 
-.size-button.active {
+.form_radio_btn input[type=radio]:checked + label{
     border: none;
-    background-color: #6c6c6c;
+    background-color: #6c6c6c; 
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.size-radios input[type='radio']{
+    display: none;
+}
+
 
 .add-show{
     max-width: 612px;
@@ -667,3 +680,194 @@ footer {
     font-size: 20px;
 }
 
+
+/*Избранное стили - Кирилл*/
+
+.heart button{
+    cursor: pointer;
+}
+
+.heart-icon {
+    transition: all 0.3s ease;
+}
+.heart-icon:hover,
+.heart-icon:focus {
+    transform: scale(1.2);
+}
+
+.favorite-opt-btn{
+    position: absolute;
+}
+
+.favorite-text{
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 45px;
+    margin: 30px 0;
+}
+
+
+/*Корзина - Кирилл*/
+.carts>h3{
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 45px;
+    margin: 30px 0;
+}
+
+.carts-option-card{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.order{
+    border: 1px solid var(--primary);
+    padding: 26px;
+    display: flex;
+    align-items: center;
+
+    gap: 60px;
+}
+.order .product-image img{
+    max-width: 100px;
+}
+
+.order .product-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 175px;
+    width: 100px;
+}
+.order .product-image::before{
+    font-weight: bolder;
+    font-size: 20px;
+    content: 'Товар';
+    position: absolute;
+    top: -10px;
+}
+.order .product-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 175px;
+    width: 100px;
+}
+
+.order .product-info::before {
+    font-weight: bolder;
+    font-size: 20px;
+    content: 'Цена';
+    position: absolute;
+    top: -10px;
+}
+.count{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 175px;
+    width: 100px;
+    position: relative;
+}
+
+.count::before{
+    font-weight: bolder;
+    font-size: 20px;
+    content: 'Количество';
+    position: absolute;
+    top: -10px;
+}
+
+.sum-order{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 175px;
+    width: 100px;
+    position: relative;
+}
+
+.sum-order::before{
+    font-weight: bolder;
+    font-size: 20px;
+    content: 'Подытог';
+    position: absolute;
+    top: -10px;
+}
+
+.count-options{
+    border: 1px solid var(--primary);
+    display: flex;
+    gap: 5px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.trangl {
+    background: #E9E9E9;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+}
+.count-info{
+    background: #303030;
+    color: white;
+}
+
+.plus-btn,
+.minus-btn,
+.delete-from-carts{
+    cursor: pointer;
+}
+.order-info-fin{
+    text-align: center;
+}
+.order-info-fin>h3{
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 45px;
+    margin: 30px 0;
+}
+
+.cart-bcg{
+    background-color: #F8F8F8;
+    padding: 20px;
+    max-width: 570px;
+    width: 100%;
+}
+
+.orders-information-delail{
+    background-color: white;
+    padding: 30px;
+}
+
+.order-text-top,
+.price-one,
+.delivery-opt,
+.price-total-fin{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #dcdcdc;
+    font-family: var(--gotica);
+    padding-bottom: 15px;
+    align-items: center;
+}
+.price-one,
+.delivery-opt,
+.price-total-fin
+{
+    padding-top: 15px;
+}
+
+.order-text-top{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.price-total-fin{
+    border: none;
+}
