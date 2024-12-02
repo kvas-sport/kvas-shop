@@ -17,7 +17,7 @@
 <header class="header">
     <div class="container">
         <div class="header-content">
-            <h1>Интернет-магазин CASUMI</h1>
+            <h1><a href="/">Интернет-магазин CASUMI</a></h1>
             <div class="wrapper__header">
                 <div class="wrapper__search-input"><input class="search-input" type="text" placeholder="Поиск"></div>
             </div>
