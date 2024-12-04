@@ -37,12 +37,21 @@
                     <a href="" class="nav-item">Питание</a>
                 </div>
                 <div class="nav-buttons">
-                    <a href="{{ route('users.profile') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/profile.svg") }}
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                        @if(\Illuminate\Support\Facades\Auth::user()->role === 'admin')
+                            <a href="/admin" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/settings.png") }}
+                                                                     alt="profile"></a>
+                        @endif
+                        <a href="{{ route('users.profile') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/profile.svg") }}
+                                                                     alt="profile"></a>
+                        <a href="{{ route('favorites.index') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/favorities.svg") }}
+                                                                     alt="profile"></a>
+                        <a href="/cart" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/cart.svg") }}
+                                                                     alt="profile"></a>
+                    @else
+                    <a href="/login" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/entries.png") }}
                                                                  alt="profile"></a>
-                    <a href="{{ route('favorites.index') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/favorities.svg") }}
-                                                                 alt="profile"></a>
-                    <a href="/cart" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/cart.svg") }}
-                                                                 alt="profile"></a>
+                    @endif
                 </div>
             </div>
         </div>

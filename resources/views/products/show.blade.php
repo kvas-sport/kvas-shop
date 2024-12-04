@@ -4,22 +4,22 @@
     <div class="product-info">
         <div class="slider">
             <div class="image-wrapper__product-image">
-                <img class="active-photo" src="{{asset($product->image_url)}}" alt="Продукт">
+                <img class="active-photo" src="{{ asset($product->images[0]->image_url) }}" alt="Продукт">
             </div>
             <ul class="preview-list">
                 <li>
                     <a class="slider-image">
-                        <img src="{{asset('assets/image-6.jpg')}}" alt="Продукт">
+                        <img src="{{ asset($product->images[1]->image_url) }}" alt="Продукт">
                     </a>
                 </li>
                 <li>
                     <a class="slider-image">
-                        <img src="{{asset('assets/image-7.jpg')}}" alt="Продукт">
+                        <img src="{{ asset($product->images[2]->image_url) }}" alt="Продукт">
                     </a>
                 </li>
                 <li>
                     <a class="slider-image">
-                        <img src="{{asset($product->image_url)}}" alt="Продукт">
+                        <img src="{{ asset($product->images[3]->image_url) }}" alt="Продукт">
                     </a>
                 </li>
             </ul>
@@ -86,7 +86,7 @@
             @foreach($populars as $product)
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="{{asset($product->image_url)}}" alt="Продукт">
+                        <img src="{{asset($product->images[0]->image_url)}}" alt="Продукт">
                     </div>
                     <div class="product-info">
                         <h3 class="name_card">{{ $product->name }}</h3>

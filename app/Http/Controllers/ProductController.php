@@ -5,19 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::all();
+        $products = Product::with('images')->get();
 
         return view('products.index', compact('products'));
     }
 
-    public function show(Product $product): View
+    public function show(int $id): View
     {
-        $populars = Product::all();
+        $product = Product::with('images')->findOrFail($id);
+
+        $populars = Product::with('images')->get();
 
         return view('products.show', compact('product'), compact('populars'));
     }
@@ -25,25 +28,39 @@ class ProductController extends Controller
     public function store(): RedirectResponse
     {
         $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'amount' => 'required',
-            'cost' => 'required',
-            'image_url' => 'required',
-            'category_id' => 'required',
+            'name' => 'required|min:3|max:255',
+            'description' => 'required|min:20|max:512',
+            'amount' => 'required|integer|min:1',
+            'cost' => 'required|integer|min:1',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
-        $product = Product::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'amount' => $data['amount'],
-            'cost' => $data['cost'],
-            'image_url' => $data['image_url'],
-        ]);
+        if (count($data['images']) > 4) {
+            return back()->withErrors(['images' => 'Изображений не может быть больше 4']);
+        }
 
-        $product->categories()->attach($data['category_id']);
+        DB::transaction(function () use ($data) {
+            $product = Product::create([
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'amount' => $data['amount'],
+                'cost' => $data['cost'],
+                'category_id' => $data['category_id'],
+            ]);
 
-        return redirect()->route('products.index');
+            foreach ($data['images'] as $image) {
+                $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+                $image->move(public_path('assets'), $imageName);
+
+                $imagePath = 'assets/' . $imageName;
+
+                $product->images()->create(['image_url' => $imagePath]);
+            }
+        }, 3);
+
+        return redirect()->back()->with(['message' => 'Успешно добавлено']);
     }
 
     public function update(): RedirectResponse
@@ -74,7 +91,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index');
+        return redirect()->back();
     }
 
 }

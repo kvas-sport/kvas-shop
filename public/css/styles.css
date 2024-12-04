@@ -880,6 +880,7 @@ footer {
 
 /* Admin panel */
 table {
+    width: 100%;
     border-collapse: collapse;
 }
 
@@ -890,6 +891,7 @@ th, td {
 }
 
 .table-description__admin>p {
+    max-width: 500px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -moz-box;

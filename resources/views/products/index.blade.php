@@ -22,7 +22,7 @@
             @foreach($products as $product)
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="{{asset($product->image_url)}}" alt="Продукт">
+                        <img src="{{asset($product->images[0]->image_url)}}" alt="Продукт">
                     </div>
                     <div class="product-info">
                         <h3 class="name_card">{{ $product->name }}</h3>

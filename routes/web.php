@@ -29,6 +29,8 @@ Route::post('/cart', [CartController::class, 'store'])->name('carts.store')->mid
 Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy')->middleware('auth');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
+Route::patch('/profile/{user}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+
 Route::get('/admin', function() {
     return view('users.admin');
 })->name('users.admin')->middleware('auth');

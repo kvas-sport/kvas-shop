@@ -9,7 +9,7 @@
                     <th>id</th>
                     <th>Название</th>
                     <th>Описание</th>
-                    <th>Кол-во</th>
+                    <th>Количество</th>
                     <th>Цена</th>
                     <th>Категория</th>
                     <th>Изображения</th>
@@ -25,8 +25,12 @@
                         <th class="table-description__admin"><p>{{ $product->description }}</p></th>
                         <th>{{ $product->amount }}</th>
                         <th>{{ $product->cost }}</th>
-                        <th>{{ $product->id }}</th>
-                        <th>{{ $product->id }}</th>
+                        <th>{{ $product->category->name }}</th>
+                        <th>
+                            @foreach($product->images as $image)
+                                <img src="{{ asset($image->image_url) }}" width="25" />
+                            @endforeach
+                        </th>
                         <th><button class="update-button">Изменить</button></th>
                         <th><button>Удалить</button></th>
                     </tr>
@@ -37,8 +41,12 @@
                             <th class="table-description__admin"><textarea name="description">{{ $product->description }}</textarea></th>
                             <th><input type="number" value="{{ $product->amount }}" name="amount"></th>
                             <th><input type="number" value="{{ $product->cost }}" name="cost"></th>
-                            <th><input type=""></th>
-                            <th><input type="file"></th>
+                            <th><input type="text" value="{{ $product->category->name }}"></th>
+                            <th>
+                                @foreach($product->images as $image)
+                                    <img src="{{ asset($image->image_url) }}" width="25" />
+                                @endforeach
+                            </th>
                             <th><button class="cancel-button" type="button">Отмена</button></th>
                             <th><button type="submit">Сохранить</button></th>
                         </form>
