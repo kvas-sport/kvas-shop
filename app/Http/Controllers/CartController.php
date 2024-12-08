@@ -12,7 +12,7 @@ class CartController extends Controller
 {
     public function index(): View
     {
-        $products = Cart::with('product')->get();
+        $products = Cart::with(['product.images'])->get();
         return view('carts.index', compact('products'));
     }
 

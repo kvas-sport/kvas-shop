@@ -7,21 +7,13 @@
                 <img class="active-photo" src="{{ asset($product->images[0]->image_url) }}" alt="Продукт">
             </div>
             <ul class="preview-list">
-                <li>
-                    <a class="slider-image">
-                        <img src="{{ asset($product->images[1]->image_url) }}" alt="Продукт">
-                    </a>
-                </li>
-                <li>
-                    <a class="slider-image">
-                        <img src="{{ asset($product->images[2]->image_url) }}" alt="Продукт">
-                    </a>
-                </li>
-                <li>
-                    <a class="slider-image">
-                        <img src="{{ asset($product->images[3]->image_url) }}" alt="Продукт">
-                    </a>
-                </li>
+                @foreach($product->images->skip(1) as $image)
+                    <li>
+                        <a class="slider-image">
+                            <img src="{{ asset($image->image_url) }}" alt="Продукт">
+                        </a>
+                    </li>
+                @endforeach
             </ul>
         </div>
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -11,16 +12,23 @@ class ProductController extends Controller
 {
     public function index(): View
     {
-        $products = Product::with('images')->get();
+        $categories = Category::all();
 
-        return view('products.index', compact('products'));
+        return view('products.index', compact('categories'));
     }
 
-    public function show(int $id): View
+    public function categoryList(Category $category): View
+    {
+        $products = Product::where('category_id', $category->id)->get();
+
+        return view('products.category', compact('products', 'category'));
+    }
+
+    public function show(Category $category, int $id): View
     {
         $product = Product::with('images')->findOrFail($id);
 
-        $populars = Product::with('images')->get();
+        $populars = Product::where('category_id', $category->id)->with('images')->get();
 
         return view('products.show', compact('product'), compact('populars'));
     }

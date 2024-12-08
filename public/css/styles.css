@@ -35,6 +35,12 @@ h1, h2, h3, h4, h5 {
     margin: 0;
 }
 
+h1 {
+    font-family: "Abhaya Libre", sans-serif;
+    font-size: 45px;
+    margin: 30px 0px;
+}
+
 ul, ol {
     list-style: none;
     padding: 0;
@@ -54,6 +60,7 @@ ul, ol {
 
 .header-content>h1 {
     max-width: 166px;
+    font-family: "Gothic A1", serif;
     font-size: 18px;
     font-weight: 600;
     margin-right: 10px;
@@ -231,12 +238,6 @@ footer {
 
 .footer-input-block input {
     padding: 12px;
-}
-
-.catalog>h1{
-    font-family: "Abhaya Libre", sans-serif;
-    font-size: 45px;
-    margin: 30px 0px;
 }
 
 .wrapper__catalog {
@@ -915,8 +916,34 @@ th button {
     display: none;
 }
 
+.categories__wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
 
+.categories__item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
 
+.categories__item>img {
+    max-width: 100%;
+}
+
+.categories__item>span {
+    color: #000000;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 12px;
+    background-color: rgba(255, 255, 255, .6);
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
 
 
 
@@ -1167,7 +1194,7 @@ th button {
     display: block;
     margin-top: 10px;
     text-decoration: underline;
-    color: #black;
+    color: black;
     margin-left: 33px;
 
 }

@@ -13,7 +13,7 @@ class FavoriteController extends Controller
 {
     public function index(): View
     {
-        $favorites = Favorite::with('product')->get();
+        $favorites = Favorite::with(['product.images'])->get();
 
         return view('favorites.index', compact('favorites'));
     }

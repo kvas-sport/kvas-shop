@@ -12,7 +12,7 @@
                     </form>
 
                     <div class="product-image">
-                        <img src="{{asset($product->product->image_url)}}" alt="Продукт">
+                        <img src="{{asset($product->product->images[0]->image_url)}}" alt="Продукт">
                     </div>
 
                     <div class="product-info-name">

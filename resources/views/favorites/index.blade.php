@@ -3,7 +3,8 @@
     <h3 class="favorite-text">Избранные</h3>
 
     <div class="product-cards">
-        @foreach($favorites as $favorite)
+        @if(count($favorites) > 0)
+            @foreach($favorites as $favorite)
                 <div class="product-card">
                     <div class="favorite-opt-btn">
                         <form class="heart" action="{{ route('favorites.store') }}" method="POST">
@@ -11,11 +12,12 @@
                             @method('POST')
                             <input type="hidden" value="{{ Auth::id() }}" name="user_id">
                             <input type="hidden" value="{{ $favorite->product->id }}" name="product_id">
-                            <button type="submit" class="favorite-button"><img src="{{ asset('assets/heart.svg') }}" alt="heart" class="heart-icon"></button>
+                            <button type="submit" class="favorite-button"><img src="{{ asset('assets/heart.svg') }}"
+                                                                               alt="heart" class="heart-icon"></button>
                         </form>
                     </div>
                     <div class="product-image">
-                        <img src="{{asset($favorite->product->image_url)}}" alt="Продукт">
+                        <img src="{{asset($favorite->product->images[0]->image_url)}}" alt="Продукт">
                     </div>
                     <div class="product-info">
                         <h3 class="name_card">{{ $favorite->product->name }}</h3>
@@ -29,9 +31,12 @@
                             <input type="hidden" value="{{ $favorite->product->id }}" name="product_id">
                             <button type="submit" class="add-to-cart" value="1">В корзину</button>
                         </form>
-                        <a href="{{ route('products.show', $favorite->product->id) }}" class="more-info">Подробнее</a>
+                        <a href="{{ route('products.show', [$favorite->product->category_id, $favorite->product->id]) }}" class="more-info">Подробнее</a>
                     </div>
                 </div>
             @endforeach
-        </div>
+        @else
+            <span>Избранных товаров нет</span>
+        @endif
+    </div>
 @endsection

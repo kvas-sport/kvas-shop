@@ -32,9 +32,9 @@
             <div class="nav-items">
                 <div class="wrapper__nav-items">
                     <a href="{{ route('products.index') }}" class="nav-item catalog-button">Каталог</a>
-                    <a href="" class="nav-item">Спортивная одежда</a>
-                    <a href="" class="nav-item">Инвентарь</a>
-                    <a href="" class="nav-item">Питание</a>
+                    <a href="{{ route('products.index') }}" class="nav-item">Спортивная одежда</a>
+                    <a href="{{ route('products.categoryList', 4) }}" class="nav-item">Инвентарь</a>
+                    <a href="{{ route('products.categoryList', 5) }}" class="nav-item">Питание</a>
                 </div>
                 <div class="nav-buttons">
                     @if(\Illuminate\Support\Facades\Auth::check())
@@ -92,7 +92,7 @@
                     <ul>
                         <li><a href="">Спортивная одежда</a></li>
                         <li><a href="">Питание</a></li>
-                        <li><a href="">Инвентарь</a></li>
+                        <li><a href="{{ route('products.categoryList', 4) }}">Инвентарь</a></li>
                     </ul>
                 </div>
                 <div class="footer-nav-item">

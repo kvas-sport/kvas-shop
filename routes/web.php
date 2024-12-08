@@ -14,7 +14,8 @@ Route::get('/', function () {
 });
 
 Route::get('/catalog', [ProductController::class, 'index'])->name('products.index');
-Route::get('/catalog/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/catalog/{category}', [ProductController::class, 'categoryList'])->name('products.categoryList');
+Route::get('/catalog/{category}/product/{product}', [ProductController::class, 'show'])->name('products.show');
 
 Route::post('/products', [ProductController::class, 'store'])->name('products.store')->middleware('admin');
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
