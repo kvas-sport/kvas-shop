@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use http\Env\Response;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -30,6 +29,7 @@ class AuthController extends Controller
 
         ]);
         Auth::login($user);
+        event(new Registered($user));
         return redirect('/');
     }
 

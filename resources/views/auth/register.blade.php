@@ -13,7 +13,7 @@
                 <a href="{{route('login')}}" class="btn btn-primary switch-form" data-switch="login">Войдите</a>
             </div>
             <div class="form-group">
-                <label>Ваша почта</label>
+                <label>Вашe имя</label>
                 <input class="form-control item" value="{{ old("name")}}" type="text" name="name" maxlength="15"
                        minlength="4" autofocus pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Имя пользователя"
                        required>
@@ -24,7 +24,7 @@
                 @enderror
             </div>
             <div class="form-group">
-                <label>Ваше имя</label>
+                <label>Ваша почта</label>
                 <input class="form-control item" value="{{ old("email")}}" type="email" name="email" id="email"
                        placeholder="Email" required
                 @error('email')
