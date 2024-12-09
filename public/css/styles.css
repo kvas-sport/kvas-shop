@@ -724,6 +724,7 @@ footer {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    vertical-align: top;
 }
 
 .order{
@@ -1371,4 +1372,69 @@ footer {
     width: 1931px;
     margin: 0 auto;
     border-bottom: 1px solid #E4E4E4;
+}
+
+
+
+/*Первый блок на главной странице - КИРИЛЛ*/
+
+.head-cintent{
+    display: flex;
+    justify-content: space-between;
+}
+
+.head-content-text h1{
+    font-family: var(--gotica);
+    font-size: 85px;
+}
+
+.head-content-text p{
+    font-family: var(--gotica);
+    color: var(--text-color);
+    max-width: 450px;
+}
+
+/*Примерные стили админ панель - Кирилл*/
+
+.admin h2{
+    text-align: center;
+    font-size: 50px;
+}
+
+.admin-select h4{
+    font-family: var(--gotica);
+    font-size: 35px;
+    font-weight: 100;
+}
+
+.actiont-btn-admin{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.admin-details{
+    text-decoration: none;
+    color: var(--text-color);
+    text-align: center; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-opt textarea{
+    max-width: 511px;
+    min-width: 511px;
+    max-height: 400px;
+}
+
+.admin-from{
+    margin-top: 30px;
+}
+
+#category_id{
+    font-size: 18px;
+    padding: 19px 15px;
 }

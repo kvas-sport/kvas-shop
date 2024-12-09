@@ -1,5 +1,16 @@
 @extends('layouts.main')
 @section('content')
+    <section class="head-cintent">
+        <div class="head-content-text">
+            <h1>Спортивный интернет - магазин</h1>
+            <p>Качественная спортивная одежда и инвентарь, которые помогут вам достичь новых высот в тренировках.</p>
+        </div>
+
+        <div class="head-content-image">
+            <img src="{{asset('assets/glav-image.jpg')}}" alt="Спортивный магазин">
+        </div>
+
+    </section>
     <section id="catalog">
         <h2>Каталог</h2>
         <div class="catalog-slider">

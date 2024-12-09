@@ -4,8 +4,7 @@
         <form
             action="{{route('register') }}"
             method="post"
-            class="registerForm" id="registerForm"
-        >
+            class="registerForm" id="registerForm">
             @csrf
             <h3 class="text-center">Регистрация</h3>
             <div class="switcher">

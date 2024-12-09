@@ -7,37 +7,38 @@
             </div>
         @endif
         <h2>Создать новый продукт</h2>
-        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data"
+        class="registerForm admin-from">
             @csrf
             @method('POST')
-            <div>
+            <div class="form-group">
                 <label for="name">Название:</label>
                 <input id="name" type="text" name="name">
             </div>
-            <div>
+            <div class="form-group admin-opt">
                 <label for="description">Описание:</label>
                 <textarea id="description" name="description"></textarea>
             </div>
-            <div>
+            <div class="form-group">
                 <label for="amount">Количество:</label>
                 <input id="amount" type="number" name="amount">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="cost">Цена:</label>
                 <input id="cost" type="number" name="cost">
             </div>
-            <div>
+            <div class="form-group">
                 <label for="image_url">Картинка:</label>
                 <input id="image_url" type="file" name="images[]" multiple>
             </div>
-            <div>
+            <div class="form-group admin-select-form-opt">
                 <label for="category_id">Категория:</label>
                 <select id="category_id" name="category_id">
                     @foreach($categories as $category)
                         <option value={{ $category->id }}>{{ $category->name }}</option>
                     @endforeach
                 </select>
-            </div>
+            </divv>
             <button type="submit">Добавить</button>
             @if ($errors->any())
                 @foreach($errors->all() as $error)
