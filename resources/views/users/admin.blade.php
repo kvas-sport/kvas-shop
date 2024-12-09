@@ -2,10 +2,17 @@
 @section('content')
     <section class="admin">
         <h2>Админская панель</h2>
-        <div>
-            <h4>Продукты</h4>
-            <a href="{{ route('users.products.create') }}">Добавить</a>
-            <a href="{{ route('users.products.edit') }}">Изменить/Удалить</a>
+        <div class="admin-select">
+            <div class="admin-select-actions">
+                <h4>Действие с продуктами</h4>
+                <div class="actiont-btn-admin">
+                    <a class="button-details admin-details" href="{{ route('users.products.create') }}">Добавить</a>
+                    <a class="button-details admin-details" href="{{ route('users.products.edit') }}">Изменить/Удалить</a>
+                </div>
+            </div>
+            <div>
+                <h4>Действие с пользователями</h4>
+            </div>
         </div>
     </section>
 @endsection
