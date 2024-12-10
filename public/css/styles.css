@@ -337,6 +337,7 @@ footer {
     height: auto;
 }
 
+
 .product-info {
     font-family: var(--gotica);
 }
@@ -713,96 +714,81 @@ footer {
 
 
 /*Корзина - Кирилл*/
-.carts>h3{
+.cartds-head-text{
     font-family: "Abhaya Libre", sans-serif;
     font-size: 45px;
     margin: 30px 0;
 }
-
-.carts-option-card{
+.carts{
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     flex-wrap: wrap;
-    vertical-align: top;
 }
 
-.order{
-    border: 1px solid var(--primary);
-    padding: 26px;
-    display: flex;
-    align-items: center;
+.product-info-price{
+    text-align: center;
+}
 
-    gap: 60px;
+.carts-option-card thead tr th{
+    border: none;
+    text-align: center;
+}
+
+.th-opt{
+    width: 200px;
+}
+
+
+.carts-option-card{
+    border: 1px solid var(--primary);
+    margin-top: 20px;
+}
+
+.order td{
+    border: none;
+}
+.order th{
+    border: none;
 }
 .order .product-image img{
     max-width: 100px;
 }
 
+.orders-info-options{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .order .product-image {
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
-    height: 175px;
-    width: 100px;
+    justify-content: space-between;
+
 }
-.order .product-image::before{
-    font-weight: bolder;
-    font-size: 20px;
-    content: 'Товар';
-    position: absolute;
-    top: -10px;
-}
+
 .order .product-info{
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    height: 175px;
-    width: 100px;
+    
 }
 
-.order .product-info::before {
-    font-weight: bolder;
-    font-size: 20px;
-    content: 'Цена';
-    position: absolute;
-    top: -10px;
-}
-.count{
+.count-options{
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 175px;
-    width: 100px;
-    position: relative;
+    text-align: center;
 }
 
-.count::before{
-    font-weight: bolder;
-    font-size: 20px;
-    content: 'Количество';
-    position: absolute;
-    top: -10px;
-}
 
 .sum-order{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 175px;
-    width: 100px;
-    position: relative;
 }
 
-.sum-order::before{
-    font-weight: bolder;
-    font-size: 20px;
-    content: 'Подытог';
-    position: absolute;
-    top: -10px;
-}
+
 
 .count-options{
     border: 1px solid var(--primary);
@@ -831,6 +817,12 @@ footer {
 .delete-from-carts{
     cursor: pointer;
 }
+.delete-from-carts button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
 .order-info-fin{
     text-align: center;
 }
@@ -852,6 +844,9 @@ footer {
     padding: 30px;
 }
 
+.total{
+    text-align: center;
+}
 .order-text-top,
 .price-one,
 .delivery-opt,
@@ -1437,4 +1432,50 @@ footer {
 #category_id{
     font-size: 18px;
     padding: 19px 15px;
+}
+
+
+/*Линчый кабинет - Кирилл*/
+
+.head-text-profile{
+    font-size: 75px;
+}
+
+.profile-leave{
+    text-decoration: none;
+    color: red;
+}
+
+.block-form{
+    max-width: 546px;
+    width: 100%;
+}
+.profile-from{
+    max-width: 514px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    border-right: 2px solid var(--primary);
+    padding-right: 30px;
+}
+
+.profile-opt-groups{
+    display: flex;
+    margin-top: 30px;
+    gap: 30px;
+}
+.block-order-inf{
+    width: 100%;
+}
+
+.sub-button{
+    display: flex;
+    margin-top: 20px;
+    justify-content: space-between;
+    max-width: 506px;
+}
+
+.block-order-inf{
+    font-size: 32px;
 }

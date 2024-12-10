@@ -1,48 +1,63 @@
 @extends('layouts.main')
 @section('content')
+    <h3 class="cartds-head-text">Корзина</h3>
     <section class="carts">
-        <h3>Корзина</h3>
-        @foreach($products as $product)
-            <div class="carts-option-card">
-                <div class="order">
-                    <form action="{{ route('carts.destroy', $product->id) }}" method="POST" class="delete-from-carts">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"><img src="{{asset('assets/close (4) 2.svg')}}" alt="Продукт"></button>
-                    </form>
+        <div>
+            @foreach($products as $product)
+            <table class="carts-option-card">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="th-opt">Товар</th>
+                        <th class="th-opt">Цена</th>
+                        <th class="th-opt">Количество</th>
+                        <th class="th-opt">Общая сумма</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="order">
+                        <td>
+                            <form action="{{ route('carts.destroy', $product->id) }}" method="POST" class="delete-from-carts">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"><img src="{{asset('assets/close (4) 2.svg')}}" alt="Продукт"></button>
+                            </form>
+                        </td>
+                        <td class="product-image">
+                            <img src="{{asset($product->product->images[0]->image_url)}}" alt="Продукт">
+                            <h3 class="name_card">{{ $product->product->name }}</h3>
+                        </td>
+                        <td class="product-info-price">
+                            <span class="cost">{{ $product->product->cost }} ₽</span>
+                        </td>
+                        <td class="count">
+                            <table>
+                                <tr>
+                                    <td class="count-options">
+                                        <div class="trangl minus-btn">
+                                            <img src="{{asset('assets/minus-sign (1) 1.svg')}}" alt="Меньше">
+                                        </div>
+                                        <div class="trangl count-info">
+                                            1
+                                        </div>
+                                        <div class="trangl plus-btn">
+                                            <img src="{{asset('assets/plus 1.svg')}}" alt="Больше">
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class="total">
+                            <span class="cost">{{ $product->product->cost }} ₽</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-                    <div class="product-image">
-                        <img src="{{asset($product->product->images[0]->image_url)}}" alt="Продукт">
-                    </div>
 
-                    <div class="product-info-name">
-                        <h3 class="name_card">{{ $product->product->name }}</h3>
-                    </div>
 
-                    <div class="product-info">
-                        <span class="cost">{{ $product->product->cost }} ₽</span>
-                    </div>
-
-                    <div class="count">
-                        <div class="count-options">
-                            <div class="trangl minus-btn">
-                                <img src="{{asset('assets/minus-sign (1) 1.svg')}}" alt="Плюс">
-                            </div>
-                            <div class="trangl count-info">
-                                1
-                            </div>
-
-                            <div class="trangl plus-btn">
-                                <img src="{{asset('assets/plus 1.svg')}}" alt="Плюс">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sum-order">
-                        <span class="cost">{{ $product->product->cost }} ₽</span>
-                    </div>
-                </div>
                 @endforeach
+        </div>
                 <div class="order-info-fin">
                     <h3>Сумма заказов</h3>
                     <div class="cart-bcg">
@@ -79,7 +94,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+
     </section>
 @endsection
 @section('scripts')
