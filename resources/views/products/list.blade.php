@@ -1,24 +1,15 @@
 @extends('layouts.main')
 @section('content')
     <section class="catalog">
-        <h1>{{ $category->name }}</h1>
-        <div class="wrapper__catalog">
-            <div class="search-container_catalog">
-                <img src="{{ asset('assets/loupe 1.svg') }}" alt="Лупа" class="search-icon">
-                <input type="text" placeholder="Поиск" class="search-input_catalog">
-            </div>
-            <div class="availability-filter">
-                <label class="filt-opt">
-                    <input type="checkbox" name="availability" value="available"> В наличии
-                </label>
-            </div>
-        </div>
+        <h1>{{ $title }}</h1>
 
-        <div class="group_image">
-            <img src="{{asset('assets/image-2.jpg')}}" alt="Худи" class="image_part">
-        </div>
         @if(count($products) > 0)
-            <h2>Подборка</h2>
+            <div class="wrapper__catalog">
+                <div class="search-container_catalog">
+                    <img src="{{ asset('assets/loupe 1.svg') }}" alt="Лупа" class="search-icon">
+                    <input type="text" placeholder="Поиск" class="search-input_catalog">
+                </div>
+            </div>
             <div class="product-cards">
                 @foreach($products as $product)
                     <div class="product-card">

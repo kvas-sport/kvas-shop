@@ -4,7 +4,7 @@
         <h1>Каталог</h1>
         <ul class="categories__wrapper">
             @foreach($categories as $category)
-                <a href="{{ route('products.categoryList', $category->id) }}">
+                <a href="{{ route('products.list', ['category_id' => $category->id]) }}">
                     <li class="categories__item">
                         <img src="{{ asset($category->image_url) }}" alt="{{ $category->name }}">
                         <span>{{ $category->name }}</span>

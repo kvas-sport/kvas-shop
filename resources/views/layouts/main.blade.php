@@ -19,7 +19,9 @@
         <div class="header-content">
             <h1><a href="/">Интернет-магазин CASUMI</a></h1>
             <div class="wrapper__header">
-                <div class="wrapper__search-input"><input class="search-input" type="text" placeholder="Поиск"></div>
+                <form action="{{ route('products.search') }}" class="wrapper__search-input">
+                    <input class="search-input" type="text" name="search" placeholder="Поиск" value="{{ request('search') }}">
+                </form>
             </div>
             <div class="social-logoes">
                 <a href=""><img class="social-logo" src="{{ asset('assets/email.svg') }}" alt="email"></a>
@@ -32,9 +34,10 @@
             <div class="nav-items">
                 <div class="wrapper__nav-items">
                     <a href="{{ route('products.index') }}" class="nav-item catalog-button">Каталог</a>
-                    <a href="{{ route('products.index') }}" class="nav-item">Спортивная одежда</a>
-                    <a href="{{ route('products.categoryList', 4) }}" class="nav-item">Инвентарь</a>
-                    <a href="{{ route('products.categoryList', 5) }}" class="nav-item">Питание</a>
+                    <a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}" class="nav-item">Спортивная одежда</a>
+                    <a href="{{ route('products.list', ['category_id' => 4]) }}" class="nav-item">Инвентарь</a>
+                    <a href="{{ route('products.list', ['category_id' => 5]) }}" class="nav-item">Питание</a>
+                    <a href="{{ route('products.list', ['category_id' => 6]) }}" class="nav-item">Обувь</a>
                 </div>
                 <div class="nav-buttons">
                     @if(\Illuminate\Support\Facades\Auth::check())
@@ -92,7 +95,7 @@
                     <ul>
                         <li><a href="">Спортивная одежда</a></li>
                         <li><a href="">Питание</a></li>
-                        <li><a href="{{ route('products.categoryList', 4) }}">Инвентарь</a></li>
+                        <li><a href="">Инвентарь</a></li>
                     </ul>
                 </div>
                 <div class="footer-nav-item">

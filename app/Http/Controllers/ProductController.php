@@ -17,11 +17,28 @@ class ProductController extends Controller
         return view('products.index', compact('categories'));
     }
 
-    public function categoryList(Category $category): View
+    public function category(Request $request): View
     {
-        $products = Product::where('category_id', $category->id)->get();
+        $queryParams = $request->query();
 
-        return view('products.category', compact('products', 'category'));
+        $products = Product::query();
+
+        $title = 'Подборка';
+        if (isset($queryParams['category_id']) && $queryParams['category_id'] > 0 && !is_array($queryParams['category_id'])) {
+            $title = Category::findOrFail((int)$queryParams['category_id'])->name;
+        }
+
+        foreach ($queryParams as $key => $value) {
+            if (is_array($value)) {
+                $products = $products->whereIn($key, $value);
+            } else {
+                $products = $products->where($key, '=', $value);
+            }
+        }
+
+        $products = $products->get();
+
+        return view('products.list', compact('products', 'title'));
     }
 
     public function show(Category $category, int $id): View
@@ -102,4 +119,20 @@ class ProductController extends Controller
         return redirect()->back();
     }
 
+    public function search(): View
+    {
+        $search = request()->query('search');
+
+        $query = Product::query();
+
+        $query->where('name', 'LIKE', "%$search%");
+        $query->orWhereHas('category', function ($query) use ($search) {
+            $query->where('name', 'LIKE', "%$search%");
+        });
+
+        $products = $query->get();
+        $title = 'Подборка';
+
+        return view('products.list', compact('products', 'title'));
+    }
 }

@@ -772,7 +772,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 }
 
 .count-options{
@@ -885,6 +885,12 @@ th, td {
     text-align: start;
     border: 1px solid black;
     padding: 5px;
+}
+
+.image-row {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 5px;
 }
 
 .table-description__admin>p {
@@ -1413,7 +1419,7 @@ footer {
 .admin-details{
     text-decoration: none;
     color: var(--text-color);
-    text-align: center; 
+    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -16,15 +16,16 @@ Route::get('/', function () {
 });
 
 Route::get('/catalog', [ProductController::class, 'index'])->name('products.index');
-Route::get('/catalog/{category}', [ProductController::class, 'categoryList'])->name('products.categoryList');
+Route::get('/catalog/products', [ProductController::class, 'category'])->name('products.list');
 Route::get('/catalog/{category}/product/{product}', [ProductController::class, 'show'])->name('products.show');
+Route::get('/catalog/products/search', [ProductController::class, 'search'])->name('products.search');
 
 Route::post('/products', [ProductController::class, 'store'])->name('products.store')->middleware('admin');
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
 
-Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index')->middleware(['auth', 'verified']);
+Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index')->middleware('auth');
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store')->middleware('auth');
 
 Route::get('/cart', [CartController::class, 'index'])->name('carts.index')->middleware('auth');
@@ -40,6 +41,7 @@ Route::get('/admin', function() {
 
 Route::get('/admin/products/create', [UserController::class, 'productCreate'])->name('users.products.create')->middleware('admin');
 Route::get('/admin/products/edit', [UserController::class, 'productEdit'])->name('users.products.edit')->middleware('admin');
+Route::patch('/admin/products/{product}/{id}', [UserController::class, 'productUpdate'])->name('users.products.update')->middleware('admin');
 
 
 #Сделал - Кирилл. Роуты на регистрацию
