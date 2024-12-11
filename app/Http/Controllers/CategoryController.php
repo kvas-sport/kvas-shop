@@ -12,7 +12,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
 
-        return view('categories.index', compact('categories'));
+        return view('products.index', compact('categories'));
     }
 
     public function store(): RedirectResponse

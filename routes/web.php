@@ -3,6 +3,7 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -15,32 +16,38 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/catalog', [ProductController::class, 'index'])->name('products.index');
+Route::get('/catalog', [CategoryController::class, 'index'])->name('products.index');
 Route::get('/catalog/products', [ProductController::class, 'category'])->name('products.list');
 Route::get('/catalog/{category}/product/{product}', [ProductController::class, 'show'])->name('products.show');
 Route::get('/catalog/products/search', [ProductController::class, 'search'])->name('products.search');
+Route::get('/catalog/load-more', [ProductController::class, 'loadMore'])->name('products.loadMore');
+
 
 Route::post('/products', [ProductController::class, 'store'])->name('products.store')->middleware('admin');
 Route::get('/products/{product}', [ProductController::class, 'edit'])->name('products.edit')->middleware('admin');
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('admin');
 
+
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
+
 
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index')->middleware('auth');
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store')->middleware('auth');
+
 
 Route::get('/cart', [CartController::class, 'index'])->name('carts.index')->middleware('auth');
 Route::post('/cart', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
 Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy')->middleware('auth');
 
+
 Route::get('/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
 Route::patch('/profile/{user}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+
 
 Route::get('/admin', function() {
     return view('users.admin');
 })->name('users.admin')->middleware('auth');
-
 Route::get('/admin/products/create', [ProductController::class, 'productCreate'])->name('users.products.create')->middleware('admin');
 Route::get('/admin/products/editList', [ProductController::class, 'productEditList'])->name('users.products.editList')->middleware('admin');
 Route::get('/admin/products/edit', [ProductController::class, 'productEdit'])->name('users.products.edit')->middleware('admin');

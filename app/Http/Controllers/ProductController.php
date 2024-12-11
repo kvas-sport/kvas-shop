@@ -8,15 +8,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
 class ProductController extends Controller
 {
-    public function index(): View
-    {
-        $categories = Category::all();
-
-        return view('products.index', compact('categories'));
-    }
-
     public function category(Request $request): View
     {
         $queryParams = $request->query();
@@ -36,10 +31,33 @@ class ProductController extends Controller
             }
         }
 
-        $products = $products->get();
+        $products = $products->paginate(12);
 
         return view('products.list', compact('products', 'title'));
     }
+
+    public function loadMore(Request $request): JsonResponse
+    {
+        $page = $request->input('page', 2);
+        $queryParams = $request->query();
+
+        $products = Product::query();
+
+        foreach ($queryParams as $key => $value) {
+            if (is_array($value)) {
+                $products = $products->whereIn($key, $value);
+            } else {
+                $products = $products->where($key, '=', $value);
+            }
+        }
+
+        $products = $products->paginate(12, ['*'], 'page', $page);
+
+        $html = view('partials.product_cards', ['products' => $products])->render();
+
+        return response()->json(['html' => $html, 'hasMore' => $products->hasMorePages()]);
+    }
+
 
     public function show(Category $category, int $id): View
     {
@@ -132,7 +150,7 @@ class ProductController extends Controller
                 });
         });
 
-        $products = $query->get();
+        $products = $query->paginate(12);
         $title = 'Подборка';
 
         return view('products.list', compact('products', 'title'));
