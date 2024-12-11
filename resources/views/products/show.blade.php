@@ -72,5 +72,7 @@
         </div>
     </div>
 @endsection
-
+@section('scripts')
+    <script src="{{ asset('scripts/show-cart.js') }}"></script>
+@endsection
 

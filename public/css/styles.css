@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5 {
 
 h1 {
     font-family: "Abhaya Libre", sans-serif;
-    font-size: 45px;
+    font-size: clamp(20px, 3vw, 45px);
     margin: 30px 0px;
 }
 
@@ -202,6 +202,7 @@ footer {
     align-items: center;
     flex-direction: row-reverse;
     margin: 0 auto;
+
 }
 
 .footer-image {
@@ -350,6 +351,8 @@ footer {
 
 .name_card{
     font-family: var(--gotica);
+    font-size: clamp(14px, 2vw, 18px);
+    max-height: 60px;
 }
 
 .favorite-button {
@@ -449,6 +452,8 @@ footer {
 .footer-nav-items {
     display: flex;
     justify-content: space-between;
+
+
 }
 
 .footer-nav-logo-block {
@@ -940,7 +945,13 @@ th button {
 .categories__item {
     display: flex;
     flex-direction: column;
-    position: relative;
+
+}
+.categories__wrapper a{ 
+    border: 1px solid #ccc;
+    padding: 15px;
+
+    text-decoration: none;
 }
 
 .categories__item>img {
@@ -948,16 +959,13 @@ th button {
 }
 
 .categories__item>span {
-    color: #000000;
+    color: var(--text-color);
     text-align: center;
-    font-size: 24px;
+    font-size: clamp(14px, 2vw, 24px);
     font-weight: 600;
     padding: 12px;
     background-color: rgba(255, 255, 255, .6);
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
+    margin-top: 10px;
 }
 
 
@@ -1397,6 +1405,9 @@ footer {
     justify-content: space-between;
 }
 
+.head-content-text{
+    max-width: 580px;
+}
 .head-content-text h1{
     font-family: var(--gotica);
     font-size: 85px;
@@ -1406,6 +1417,10 @@ footer {
     font-family: var(--gotica);
     color: var(--text-color);
     max-width: 450px;
+}
+
+.head-content-image img{
+    max-width: 700px;
 }
 
 /*Примерные стили админ панель - Кирилл*/
@@ -1497,4 +1512,98 @@ footer {
 
 .block-order-inf{
     font-size: 32px;
+}
+
+
+
+
+
+
+/*Адаптация - Кирилл*/
+
+@media(max-width:1024px) {
+    /*Категория*/
+    .categories__wrapper{
+        grid-template-columns: repeat(2, 1fr);
+        gap:20px;
+    }
+
+    .wrapper__subscribe-block img{ /*Класс-затычка*/
+        display: none;
+    }
+    /*Футер*/
+    .footer-input-block{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer-nav-items{
+        max-width: 600px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .footer-nav-logo-block{
+        max-width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+    }
+
+    .adapt-items{
+        flex-direction: row;
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .adapt-items:last-child{
+        border: none;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .adapt-items:last-child h4{
+        text-align: center;
+    }
+    .footer-nav-item ul{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .wrapper__footer-bottom {
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+
+
+
+    .product-cards{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+.wrapper__subscribe-block{
+    flex-wrap: wrap;
+}
+
+
+/*Классы - затычки - нужен бургер*/
+.wrapper__nav-items{
+    flex-wrap: wrap;
+}
+
+.nav-buttons{
+    flex-wrap: wrap;
+}
+
+.header-content{
+    flex-wrap: wrap;
+}
+
+.footer-nav-items{
+    flex-wrap: wrap;
+    gap: 20px;
 }

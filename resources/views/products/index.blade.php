@@ -8,6 +8,7 @@
                     <li class="categories__item">
                         <img src="{{ asset($category->image_url) }}" alt="{{ $category->name }}">
                         <span>{{ $category->name }}</span>
+                        <span class="more-info">Подробнее</span>
                     </li>
                 </a>
             @endforeach

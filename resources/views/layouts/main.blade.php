@@ -74,7 +74,7 @@
                     <h2>Подпишись на нашу рассылку</h2>
                     <input type="email" placeholder="Email">
                 </div>
-                <div>
+                <div class="foter-text-con">
                     <p>Подписывайся на рассылку и получай уведомления на акции</p>
                     <button>Подписаться</button>
                 </div>
@@ -90,7 +90,7 @@
                         <li>Магазин спортивной одежды, инвентаря, питания с доставкой по всей стране</li>
                     </ul>
                 </div>
-                <div class="footer-nav-item">
+                <div class="footer-nav-item adapt-items">
                     <h4>Категории</h4>
                     <ul>
                         <li><a href="">Спортивная одежда</a></li>
@@ -98,7 +98,7 @@
                         <li><a href="">Инвентарь</a></li>
                     </ul>
                 </div>
-                <div class="footer-nav-item">
+                <div class="footer-nav-item adapt-items">
                     <h4>Как оформить заказ</h4>
                     <ul>
                         <li><a href="">Оплата</a></li>
@@ -108,7 +108,7 @@
                         <li><a href="">Скидки</a></li>
                     </ul>
                 </div>
-                <div class="footer-nav-item footer-nav-contact-block">
+                <div class="footer-nav-item footer-nav-contact-block adapt-items">
                     <h4>Контакты</h4>
                     <ul>
                         <li><a href="">7 (567) 439-82-34</a></li>
