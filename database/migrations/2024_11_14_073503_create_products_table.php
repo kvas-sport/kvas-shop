@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('amount');
             $table->integer('cost');
             $table->string('image_url')->nullable();
-            $table->foreignId('category_id')->constrained('categories');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -8,7 +8,7 @@
         @endif
         <h2>Создать новый продукт</h2>
         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data"
-        class="registerForm admin-from">
+              class="registerForm admin-from">
             @csrf
             @method('POST')
             <div class="form-group">
@@ -38,7 +38,7 @@
                         <option value={{ $category->id }}>{{ $category->name }}</option>
                     @endforeach
                 </select>
-            </divv>
+            </div>
             <button type="submit">Добавить</button>
             @if ($errors->any())
                 @foreach($errors->all() as $error)

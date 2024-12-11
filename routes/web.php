@@ -21,7 +21,9 @@ Route::get('/catalog/{category}/product/{product}', [ProductController::class, '
 Route::get('/catalog/products/search', [ProductController::class, 'search'])->name('products.search');
 
 Route::post('/products', [ProductController::class, 'store'])->name('products.store')->middleware('admin');
+Route::get('/products/{product}', [ProductController::class, 'edit'])->name('products.edit')->middleware('admin');
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
+Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('admin');
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
 
@@ -39,9 +41,12 @@ Route::get('/admin', function() {
     return view('users.admin');
 })->name('users.admin')->middleware('auth');
 
-Route::get('/admin/products/create', [UserController::class, 'productCreate'])->name('users.products.create')->middleware('admin');
-Route::get('/admin/products/edit', [UserController::class, 'productEdit'])->name('users.products.edit')->middleware('admin');
-Route::patch('/admin/products/{product}/{id}', [UserController::class, 'productUpdate'])->name('users.products.update')->middleware('admin');
+Route::get('/admin/products/create', [ProductController::class, 'productCreate'])->name('users.products.create')->middleware('admin');
+Route::get('/admin/products/editList', [ProductController::class, 'productEditList'])->name('users.products.editList')->middleware('admin');
+Route::get('/admin/products/edit', [ProductController::class, 'productEdit'])->name('users.products.edit')->middleware('admin');
+
+//Route::get('/admin/products/create', [UserController::class, 'productCreate'])->name('users.products.create')->middleware('admin');
+//Route::get('/admin/products/edit', [UserController::class, 'productEdit'])->name('users.products.edit')->middleware('admin');
 
 
 #Сделал - Кирилл. Роуты на регистрацию

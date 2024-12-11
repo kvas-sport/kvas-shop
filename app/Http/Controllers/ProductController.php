@@ -54,7 +54,7 @@ class ProductController extends Controller
     {
         $data = request()->validate([
             'name' => 'required|min:3|max:255',
-            'description' => 'required|min:20|max:512',
+            'description' => 'required|min:20|max:4096',
             'amount' => 'required|integer|min:1',
             'cost' => 'required|integer|min:1',
             'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
@@ -121,18 +121,43 @@ class ProductController extends Controller
 
     public function search(): View
     {
-        $search = request()->query('search');
+        $search = mb_strtolower(request()->query('search'));
 
         $query = Product::query();
 
-        $query->where('name', 'LIKE', "%$search%");
-        $query->orWhereHas('category', function ($query) use ($search) {
-            $query->where('name', 'LIKE', "%$search%");
+        $query->where(function ($query) use ($search) {
+            $query->whereRaw('LOWER(name) LIKE ?', ["%{$search}%"])
+                ->orWhereHas('category', function ($query) use ($search) {
+                    $query->whereRaw('LOWER(name) LIKE ?', ["%{$search}%"]);
+                });
         });
 
         $products = $query->get();
         $title = 'Подборка';
 
         return view('products.list', compact('products', 'title'));
+    }
+
+    public function productCreate(): View
+    {
+        $products = Product::all();
+        $categories = Category::all();
+
+        return view('users.products.create', compact('products', 'categories'));
+    }
+
+    public function productEditList(): View
+    {
+        $products = Product::all();
+
+        return view('users.products.editList', compact('products'));
+    }
+
+    public function edit(Product $product): View
+    {
+        $product = $product->load('images');
+        $categories = Category::all();
+
+        return view('users.products.edit', compact('product', 'categories'));
     }
 }

@@ -29,19 +29,4 @@ class UserController extends Controller
 
         return view('users.profile', compact('user'));
     }
-
-    public function productCreate(): View
-    {
-        $products = Product::all();
-        $categories = Category::all();
-
-        return view('users.products.create', compact('products', 'categories'));
-    }
-
-    public function productEdit(): View
-    {
-        $products = Product::all();
-
-        return view('users.products.edit', compact('products'));
-    }
 }

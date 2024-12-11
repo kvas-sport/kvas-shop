@@ -876,14 +876,27 @@ footer {
 
 
 /* Admin panel */
-table {
+.table {
     width: 100%;
-    border-collapse: collapse;
 }
 
-th, td {
-    text-align: start;
+.table-row {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    gap: 5px;
+    text-align: center;
     border: 1px solid black;
+    padding: 5px;
+}
+
+.td:not(:first-child) {
+    border-left: 1px solid #000000;
+}
+
+.td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 5px;
 }
 
