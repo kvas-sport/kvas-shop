@@ -48,7 +48,7 @@
                             </table>
                         </td>
                         <td class="total">
-                            <span class="cost">{{ $product->product->cost }} ₽</span>
+                            <span class="cost">{{ $product->product->cost }}</span>
                         </td>
                     </tr>
                 </tbody>
@@ -59,7 +59,7 @@
                 @endforeach
         </div>
                 <div class="order-info-fin">
-                    <h3>Сумма заказов</h3>
+                    <h3>Сумма заказа</h3>
                     <div class="cart-bcg">
                         <div class="orders-information-delail">
                             <div class="order-text-top">
@@ -68,18 +68,18 @@
                             </div>
 
                             <div class="price-one">
-                                <p>Цена за товар</p>
-                                <span class="cost">{{ $product->product->cost }} ₽</span>
+                                <p>Цена за все позиции</p>
+                                <span class="cost"></span>
                             </div>
 
                             <div class="delivery-opt">
                                 <p>Доставка</p>
-                                <span class="cost">Доставка почтой из РФ: 960₽</span>
+                                <span class="cost">Только по городу: 960₽</span>
                             </div>
 
                             <div class="price-total-fin">
                                 <h4>Итог</h4>
-                                <span class="cost">{{ $product->product->cost }} ₽</span>
+                                <span class="cost"></span>
                             </div>
                         </div>
 

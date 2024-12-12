@@ -68,7 +68,7 @@
 <footer>
     <div class="subscribe-block">
         <div class="wrapper__subscribe-block">
-            <img class="footer-image" src={{ asset("assets/footer-bg.png") }} alt="footer-bg-image">
+
             <div class="footer-input-block">
                 <div>
                     <h2>Подпишись на нашу рассылку</h2>
@@ -79,6 +79,7 @@
                     <button>Подписаться</button>
                 </div>
             </div>
+            <img class="footer-image" src={{ asset("assets/footer-bg.png") }} alt="footer-bg-image">
         </div>
     </div>
     <div class="container">
