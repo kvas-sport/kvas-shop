@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Characteristic;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
@@ -26,7 +28,9 @@ class UserController extends Controller
     public function profile(): View
     {
         $user = auth()->user();
+        $orders = Order::where('user_id', $user->id)->with('products')->get();
+        $characteristics = Characteristic::all()->keyBy('id');
 
-        return view('users.profile', compact('user'));
+        return view('users.profile', compact('user', 'orders', 'characteristics'));
     }
 }

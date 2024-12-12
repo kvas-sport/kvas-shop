@@ -33,10 +33,10 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 Route::post('/images/{product}', [ImageController::class, 'store'])->name('images.store')->middleware('admin');
 Route::delete('/images/{image}', [ImageController::class, 'destroy'])->name('images.destroy')->middleware('admin');
 
-Route::post('/characteristic/{product}', [CharacteristicController::class, 'store'])->name('characteristic.store')->middleware('admin');
+Route::post('/characteristic/{product}', [CharacteristicController::class, 'store'])->name('characteristics.store')->middleware('admin');
+Route::patch('/characteristic/{product}', [CharacteristicController::class, 'update'])->name('characteristics.update')->middleware('admin');
 
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
-
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store')->middleware('auth');
 
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index')->middleware('auth');
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store')->middleware('auth');

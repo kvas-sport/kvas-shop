@@ -130,11 +130,11 @@ class ProductController extends Controller
     public function update(Product $product): RedirectResponse
     {
         $data = request()->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'amount' => 'required',
-            'cost' => 'required',
-            'category_id' => 'required',
+            'name' => 'required|min:3|max:255',
+            'description' => 'required|min:20|max:4096',
+            'amount' => 'required|integer|min:1',
+            'cost' => 'required|integer|min:1',
+            'category_id' => 'required|exists:categories,id',
         ]);
 
         $product->update([

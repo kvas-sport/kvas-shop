@@ -1007,16 +1007,13 @@ th button {
 .characteristic {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
 }
 
 .characteristic>.item {
     display: flex;
     align-items: center;
-}
-
-.characteristic>.item>input[type=checkbox] {
-    width: 100%;
 }
 
 .characteristic>.item>label {

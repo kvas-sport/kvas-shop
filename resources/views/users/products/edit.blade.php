@@ -59,17 +59,38 @@
         </div>
 
         <h2>Характеристики:</h2>
-        <form action="{{ route('characteristic.store', $product) }}" method="POST" class="characteristic">
+        <form action="{{ route('characteristics.store', $product) }}" method="POST">
             @csrf
             @method('POST')
-            @foreach($product->characteristics as $characteristic)
-                <div class="item">
-                    <input type="checkbox" id="{{ $characteristic->id }}" name="characteristics[]" checked>
-                    <label for="{{ $characteristic->id }}">{{ $characteristic->name }}</label>
-                </div>
-            @endforeach
-            <button type="submit">Сохранить</button>
+            <h4>Добавить характеристику</h4>
+            <div class="form-group">
+                <label for="amount">Название:</label>
+                <input type="text" name="name">
+            </div>
+            <div class="form-group">
+                <label for="amount">Количество:</label>
+                <input type="number" name="amount">
+            </div>
+            <button type="submit">Добавить</button>
         </form>
+        @if(count($product->characteristics) > 0)
+            <form action="{{ route('characteristics.update', $product) }}" method="POST">
+                @csrf
+                @method('PATCH')
+                <div class="characteristic">
+                    @foreach($product->characteristics as $characteristic)
+                        <div class="item">
+                            <input type="checkbox" id="{{ $characteristic->id }}" value="{{ $characteristic->id }}"
+                                   name="characteristics[]" checked>
+                            <label for="{{ $characteristic->id }}">{{ $characteristic->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
+                <div class="form-group">
+                    <button type="submit">Сохранить</button>
+                </div>
+            </form>
+        @endif
     </section>
 @endsection
 

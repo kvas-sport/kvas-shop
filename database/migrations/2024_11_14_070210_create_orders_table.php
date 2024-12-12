@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->integer('total_amount');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('address')->nullable();
             $table->string('phone');
-            $table->string('status');
+            $table->enum('status', ['accepted', 'delivered', 'returned'])->default('accepted');
             $table->timestamps();
         });
     }
