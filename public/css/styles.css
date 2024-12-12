@@ -352,9 +352,9 @@ footer {
     font-family: var(--gotica);
 }
 
-.favorite-button {
-    border: 0;
-    background: transparent;
+.hidden-button {
+    border: 0 !important;
+    background: transparent !important;
 }
 
 .product-buttons {
@@ -960,11 +960,68 @@ th button {
     left: 0;
 }
 
+.images-edit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
+.images-edit .hidden-button {
+    padding: 0;
+    position: relative;
+}
 
+.images-edit .hidden-button:before, .images-edit .hidden-button:after {
+    content: '';
+    width: 25px;
+    height: 3px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    cursor: pointer;
+}
 
+.images-edit button:before {
+    rotate: 45deg;
+}
 
+.images-edit button:after {
+    rotate: -45deg;
+}
 
+.images-edit img {
+    max-width: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.image-add-button {
+    font-size: 24px;
+    border-radius: 50px;
+    aspect-ratio: 1;
+    padding: 0 10px !important;
+    cursor: pointer;
+}
+
+.characteristic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.characteristic>.item {
+    display: flex;
+    align-items: center;
+}
+
+.characteristic>.item>input[type=checkbox] {
+    width: 100%;
+}
+
+.characteristic>.item>label {
+    font-size: 24px;
+}
 
 
 

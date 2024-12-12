@@ -6,7 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loadMoreButton) {
         loadMoreButton.addEventListener('click', () => {
             currentPage++;
+
             const url = new URL(loadMoreButton.dataset.url || window.location.href);
+
+            const existingParams = new URLSearchParams(window.location.search);
+            existingParams.forEach((value, key) => {
+                url.searchParams.set(key, value);
+            });
+
             url.searchParams.set('page', currentPage.toString());
 
             console.log(url);
@@ -15,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => response.json())
                 .then(data => {
                     productContainer.insertAdjacentHTML('beforeend', data.html);
+
                     if (!data.hasMore) {
                         loadMoreButton.remove();
                     }

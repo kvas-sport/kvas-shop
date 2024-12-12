@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CharacteristicController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
@@ -28,6 +30,10 @@ Route::get('/products/{product}', [ProductController::class, 'edit'])->name('pro
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('admin');
 
+Route::post('/images/{product}', [ImageController::class, 'store'])->name('images.store')->middleware('admin');
+Route::delete('/images/{image}', [ImageController::class, 'destroy'])->name('images.destroy')->middleware('admin');
+
+Route::post('/characteristic/{product}', [CharacteristicController::class, 'store'])->name('characteristic.store')->middleware('admin');
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders.index')->middleware('auth');
 
