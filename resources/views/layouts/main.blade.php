@@ -68,17 +68,18 @@
 <footer>
     <div class="subscribe-block">
         <div class="wrapper__subscribe-block">
-            <img class="footer-image" src={{ asset("assets/footer-bg.png") }} alt="footer-bg-image">
+
             <div class="footer-input-block">
                 <div>
                     <h2>Подпишись на нашу рассылку</h2>
                     <input type="email" placeholder="Email">
                 </div>
-                <div>
+                <div class="foter-text-con">
                     <p>Подписывайся на рассылку и получай уведомления на акции</p>
                     <button>Подписаться</button>
                 </div>
             </div>
+            <img class="footer-image" src={{ asset("assets/footer-bg.png") }} alt="footer-bg-image">
         </div>
     </div>
     <div class="container">
@@ -90,7 +91,7 @@
                         <li>Магазин спортивной одежды, инвентаря, питания с доставкой по всей стране</li>
                     </ul>
                 </div>
-                <div class="footer-nav-item">
+                <div class="footer-nav-item adapt-items">
                     <h4>Категории</h4>
                     <ul>
                         <li><a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}">Спортивная одежда</a></li>
@@ -98,14 +99,14 @@
                         <li><a href="{{ route('products.list', ['category_id' => 5]) }}">Питание</a></li>
                     </ul>
                 </div>
-                <div class="footer-nav-item">
+                <div class="footer-nav-item adapt-items">
                     <h4>Как оформить заказ</h4>
                     <ul>
                         <li><a href="{{ route('carts.index') }}">Оплата</a></li>
                         <li><a href="{{ route('users.profile') }}">Доставка</a></li>
                     </ul>
                 </div>
-                <div class="footer-nav-item footer-nav-contact-block">
+                <div class="footer-nav-item footer-nav-contact-block adapt-items">
                     <h4>Контакты</h4>
                     <ul>
                         <li><a href="">7 (965) 629-62-12</a></li>

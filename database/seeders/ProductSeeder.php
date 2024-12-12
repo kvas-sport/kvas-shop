@@ -74,7 +74,6 @@ class ProductSeeder extends Seeder
             $product->images()->create(['image_url' => 'assets/1733943131-6759df5b152e9.jpg']);
             $product->images()->create(['image_url' => 'assets/1733943131-6759df5b153ab.jpg']);
         }
-
         for ($i = 0; $i < $faker->numberBetween(3, 20); $i++) {
             $product = Product::create([
                 'name' => "Гантель Demix, 2 кг",

@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5 {
 
 h1 {
     font-family: "Abhaya Libre", sans-serif;
-    font-size: 45px;
+    font-size: clamp(20px, 3vw, 45px);
     margin: 30px 0px;
 }
 
@@ -200,8 +200,8 @@ footer {
     width: 100%;
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
     margin: 0 auto;
+
 }
 
 .footer-image {
@@ -231,7 +231,7 @@ footer {
 .footer-input-block h2 {
     color: #ffffff;
     font-family: "KTFJermilovTrial", sans-serif;
-    font-size: 75px;
+    font-size: clamp(25px, 4vw, 75px);
     text-transform: uppercase;
     line-height: 1;
 }
@@ -340,6 +340,7 @@ footer {
 
 .product-info {
     font-family: var(--gotica);
+
 }
 
 .product-cards>.product-card>.product-info {
@@ -350,6 +351,8 @@ footer {
 
 .name_card{
     font-family: var(--gotica);
+    font-size: clamp(12px, 2vw, 18px);
+    max-height: 60px;
 }
 
 .hidden-button {
@@ -449,6 +452,8 @@ footer {
 .footer-nav-items {
     display: flex;
     justify-content: space-between;
+
+
 }
 
 .footer-nav-logo-block {
@@ -526,7 +531,7 @@ footer {
 /* Registration & Login */
 .registerForm h3, .loginForm h3 {
     width: 100%;
-    font-size: 70px;
+    font-size: clamp(20px, 5vw, 70px);
     text-align: center;
 }
 
@@ -538,7 +543,7 @@ footer {
 
 .switcher span, .switcher a {
     color: #828282;
-    font-size: 24px;
+    font-size: clamp(15px, 1vw, 24px);
 }
 
 .registerForm, .loginForm, .form-group {
@@ -623,7 +628,7 @@ footer {
 .show-product-info{
     margin-top: 50px;
     display: flex;
-    flex-direction: row;
+    flex-direction: row !important;
     justify-content: space-between;
 }
 
@@ -639,22 +644,22 @@ footer {
 .size-radios{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     flex-wrap: wrap;
     gap: 30px;
 }
 .form_radio_btn label {
     display:flex;
     justify-content: center;
-    width: 150px;
-    padding: 15px 46px;
+    max-width: 40px;
+    padding: 15px 20px;
+    border-radius: 10px;
     border: 1px solid var(--primary);
     border-radius: 2px;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: transparent;
     color: var(--primary);
-    font-size: 15px;
+    font-size: clamp(12px, 1vw, 14px);
 }
 
 .form_radio_btn label:hover {
@@ -684,7 +689,7 @@ footer {
 }
 
 .show-text{
-    font-size: 20px;
+    font-size: clamp(12px, 2vw, 20px);
 }
 
 
@@ -716,14 +721,15 @@ footer {
 /*Корзина - Кирилл*/
 .cartds-head-text{
     font-family: "Abhaya Libre", sans-serif;
-    font-size: 45px;
+    font-size: clamp(25px, 3vw, 45px);
     margin: 30px 0;
 }
 .carts{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
+    gap:50px;
 }
 
 .product-info-price{
@@ -733,6 +739,7 @@ footer {
 .carts-option-card thead tr th{
     border: none;
     text-align: center;
+    max-width: 702px;
 }
 
 .th-opt{
@@ -828,7 +835,7 @@ footer {
 }
 .order-info-fin>h3{
     font-family: "Abhaya Libre", sans-serif;
-    font-size: 45px;
+    font-size: clamp(20px, 3vw,45px);
     margin: 30px 0;
 }
 
@@ -866,7 +873,7 @@ footer {
 }
 
 .order-text-top{
-    font-size: 20px;
+    font-size: clamp(14px, 2vw, 20px);
     font-weight: bolder;
 }
 
@@ -940,7 +947,13 @@ th button {
 .categories__item {
     display: flex;
     flex-direction: column;
-    position: relative;
+
+}
+.categories__wrapper a{ 
+    border: 1px solid #ccc;
+    padding: 15px;
+
+    text-decoration: none;
 }
 
 .categories__item>img {
@@ -948,16 +961,13 @@ th button {
 }
 
 .categories__item>span {
-    color: #000000;
+    color: var(--text-color);
     text-align: center;
-    font-size: 24px;
+    font-size: clamp(14px, 2vw, 24px);
     font-weight: 600;
     padding: 12px;
     background-color: rgba(255, 255, 255, .6);
-    position: absolute;
-    width: 100%;
-    bottom: 0;
-    left: 0;
+    margin-top: 10px;
 }
 
 .images-edit {
@@ -1078,8 +1088,8 @@ th button {
 }
 
 .button-details {
-    width: 282px;
-    height: 52px;
+    max-width: 282px;
+    max-height: 52px;
     background-color: #fff;
     border: 1px solid #ABABAB;
     border-radius: 3px 0 0 3px;
@@ -1451,6 +1461,9 @@ footer {
     justify-content: space-between;
 }
 
+.head-content-text{
+    max-width: 580px;
+}
 .head-content-text h1{
     font-family: var(--gotica);
     font-size: 85px;
@@ -1462,16 +1475,23 @@ footer {
     max-width: 450px;
 }
 
+.head-content-image img{
+    max-width: 700px;
+}
+
 /*Примерные стили админ панель - Кирилл*/
 
 .admin h2{
     text-align: center;
-    font-size: 50px;
+    font-size: clamp(20px, 3vw, 50px);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 20px;
 }
 
 .admin-select h4{
     font-family: var(--gotica);
-    font-size: 35px;
+    font-size: clamp(15px, 2vw, 35px);
     font-weight: 100;
 }
 
@@ -1484,6 +1504,7 @@ footer {
 
 }
 .admin-details{
+    font-size: clamp(12px, 2vw, 16px);
     text-decoration: none;
     color: var(--text-color);
     text-align: center;
@@ -1511,7 +1532,7 @@ footer {
 /*Линчый кабинет - Кирилл*/
 
 .head-text-profile{
-    font-size: 75px;
+    font-size: clamp(25px, 4vw, 75px);
 }
 
 .profile-leave{
@@ -1537,6 +1558,7 @@ footer {
     display: flex;
     margin-top: 30px;
     gap: 30px;
+
 }
 .block-order-inf{
     width: 100%;
@@ -1549,6 +1571,186 @@ footer {
     max-width: 506px;
 }
 
-.block-order-inf{
-    font-size: 32px;
+.block-order-inf h4{
+    font-size: clamp(20px, 3vw, 32px);
 }
+
+
+
+
+
+/*Адаптация - Кирилл*/
+
+
+/* футер */
+@media (max-width:1635px) {
+    .footer-image{
+        display: none;
+        
+    }
+
+    .footer-input-block {
+        margin-left: 0;
+    }
+    .wrapper__subscribe-block{
+        justify-content: center;
+    }
+}
+
+@media(max-width:1024px) {
+    /* карточка товара */
+    .product-info{
+        flex-wrap: wrap;
+        gap:0;
+        justify-content: center;
+    }
+    .show-product-info{
+        justify-content: start;
+    }
+    /* админка */
+    .admin-select h4{
+        text-align: center;
+    }
+    .head-text-profile{
+        text-align: center;
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+    }
+    .block-order-inf h4{
+        text-align: center;
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+
+    }
+    .profile-opt-groups{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .profile-from{
+        border-right: none;
+        padding-right: 0;
+    }
+    .block-form{
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+        max-width: 514px;
+    }
+
+    .actiont-btn-admin{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    /* Корзина */
+
+    /*Категория*/
+    .categories__wrapper{
+        grid-template-columns: repeat(2, 1fr);
+        gap:20px;
+    }
+
+    .wrapper__subscribe-block img{ /*Класс-затычка*/
+        display: none;
+    }
+    /*Футер*/
+    .footer-input-block{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer-nav-items{
+        max-width: 600px;
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .footer-nav-logo-block{
+        max-width: 100%;
+        text-align: center;
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+    }
+
+    .adapt-items{
+        flex-direction: row;
+        border-bottom: 1px solid var(--primary);
+        padding-bottom: 20px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .adapt-items:last-child{
+        border: none;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;
+    }
+    .adapt-items:last-child h4{
+        text-align: center;
+    }
+    .footer-nav-item ul{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .wrapper__footer-bottom {
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+
+
+
+    .product-cards{
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* Карточки товаров  */
+@media(max-width:730px) {
+    .product-cards{
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .size-radios{
+        margin: 0 auto;
+    }
+    .slider-image img{
+        max-width: 100px;
+    }
+
+    .slider{
+        flex-direction: column;
+    }
+    .preview-list{
+        flex-direction: row;
+    }
+    /* Корзина */
+    .order .product-image {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+}
+
+
+/*Классы - затычки - нужен бургер*/
+.wrapper__nav-items{
+    flex-wrap: wrap;
+}
+
+.nav-buttons{
+    flex-wrap: wrap;
+}
+
+.header-content{
+    flex-wrap: wrap;
+}
+
+.footer-nav-items{
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.wrapper__subscribe-block{
+    flex-wrap: wrap;
+}
+
