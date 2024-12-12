@@ -2,7 +2,6 @@
 @section('content')
     <section class="admin">
         <h2>Изменить продукт</h2>
-        <input type="search" placeholder="Поиск">
         <div class="table">
             <div class="thead">
                 <div class="table-row">
@@ -35,7 +34,7 @@
                             <a href="{{ route('products.edit', $product->id) }}" type="button" class="update-button">Изменить</a>
                         </div>
                         <div class='td'>
-                            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                            <form action="{{ route('products.destroy', $product) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit">Удалить</button>
@@ -44,6 +43,7 @@
                     </div>
                 @endforeach
             </div>
+            {{ $products->links() }}
         </div>
     </section>
 @endsection

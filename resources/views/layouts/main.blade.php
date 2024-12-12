@@ -94,28 +94,23 @@
                 <div class="footer-nav-item adapt-items">
                     <h4>Категории</h4>
                     <ul>
-                        <li><a href="">Спортивная одежда</a></li>
-                        <li><a href="">Питание</a></li>
-                        <li><a href="">Инвентарь</a></li>
+                        <li><a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}">Спортивная одежда</a></li>
+                        <li><a href="{{ route('products.list', ['category_id' => 4]) }}">Инвентарь</a></li>
+                        <li><a href="{{ route('products.list', ['category_id' => 5]) }}">Питание</a></li>
                     </ul>
                 </div>
                 <div class="footer-nav-item adapt-items">
                     <h4>Как оформить заказ</h4>
                     <ul>
-                        <li><a href="">Оплата</a></li>
-                        <li><a href="">Доставка</a></li>
-                        <li><a href="">Возврат</a></li>
-                        <li><a href="">Отзывы</a></li>
-                        <li><a href="">Скидки</a></li>
+                        <li><a href="{{ route('carts.index') }}">Оплата</a></li>
+                        <li><a href="{{ route('users.profile') }}">Доставка</a></li>
                     </ul>
                 </div>
                 <div class="footer-nav-item footer-nav-contact-block adapt-items">
                     <h4>Контакты</h4>
                     <ul>
-                        <li><a href="">7 (567) 439-82-34</a></li>
-                        <li><a href="">E-mail: rumassa13@gmail.com</a></li>
-                        <li><a href="">Telegram: @consultant_rumassa (составление курсов и т.д.)</a></li>
-                        <li><a href="">Telegram: @Rumassa</a></li>
+                        <li><a href="">7 (965) 629-62-12</a></li>
+                        <li><a href="">E-mail: ahms65040@gmail.com</a></li>
                     </ul>
                 </div>
             </div>

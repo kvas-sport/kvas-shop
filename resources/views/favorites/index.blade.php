@@ -12,7 +12,7 @@
                             @method('POST')
                             <input type="hidden" value="{{ Auth::id() }}" name="user_id">
                             <input type="hidden" value="{{ $favorite->product->id }}" name="product_id">
-                            <button type="submit" class="favorite-button"><img src="{{ asset('assets/heart.svg') }}"
+                            <button type="submit" class="hidden-button"><img src="{{ asset('assets/heart.svg') }}"
                                                                                alt="heart" class="heart-icon"></button>
                         </form>
                     </div>

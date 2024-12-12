@@ -25,4 +25,9 @@ class Product extends Model
     {
         return $this->belongsTo(Favorite::class);
     }
+
+    public function characteristics(): hasMany
+    {
+        return $this->hasMany(Characteristic::class);
+    }
 }

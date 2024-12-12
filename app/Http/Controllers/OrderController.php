@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -21,23 +22,31 @@ class OrderController extends Controller
     {
         $data = request()->validate([
             'user_id' => 'required|exists:users,id',
-            'product_id' => 'required|exists:products,id',
-            'total_amount' => 'required|integer|min:1',
+            'product_ids.*' => 'required|exists:products,id',
             'address' => 'required',
             'phone' => 'required',
-            'status' => 'required',
         ]);
 
         $order = Order::create([
-            'total_amount' => $data['total_amount'],
+            'user_id' => $data['user_id'],
             'address' => $data['address'],
             'phone' => $data['phone'],
-            'status' => $data['status'],
         ]);
 
-        $order->orderProducts()->attach($data['product_id'], $data['user_id']);
+        foreach ($data['product_ids'] as $product_id) {
+            $product = Cart::where('product_id', $product_id)->first();
+            $characteristic_id = $product->characteristic_id;
+            $amount = $product->amount;
 
-        return redirect()->route('orders.index');
+            $order->products()->attach($product_id, [
+                'characteristic_id' => $characteristic_id,
+                'amount' => $amount,
+            ]);
+        }
+
+        Cart::where('user_id', $data['user_id'])->delete();
+
+        return redirect()->back();
     }
 
     public function destroy(Order $order): RedirectResponse

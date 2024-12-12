@@ -7,13 +7,14 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class FavoriteController extends Controller
 {
     public function index(): View
     {
-        $favorites = Favorite::with(['product.images'])->get();
+        $favorites = Favorite::where('user_id', Auth::id())->with(['product.images'])->get();
 
         return view('favorites.index', compact('favorites'));
     }

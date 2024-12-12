@@ -12,7 +12,8 @@ class CartController extends Controller
 {
     public function index(): View
     {
-        $products = Cart::with(['product.images'])->get();
+        $products = Cart::where('user_id', Auth::id())->with(['product.images'])->get();
+
         return view('carts.index', compact('products'));
     }
 
@@ -21,7 +22,10 @@ class CartController extends Controller
         $data = request()->validate([
             'user_id' => 'required|integer|exists:users,id',
             'product_id' => 'required|integer|exists:products,id',
+            'characteristic_id' => 'required|integer|exists:characteristics,id',
         ]);
+
+        $data['amount'] = 1;
 
         Cart::create($data);
 

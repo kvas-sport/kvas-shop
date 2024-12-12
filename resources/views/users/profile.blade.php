@@ -34,6 +34,19 @@
         </div>
         <div class="block-order-inf">
             <h4>Информация о заказе</h4>
-        </div>  
+            <ul>
+                @foreach($orders as $order)
+                    <li>
+                        @foreach($order->products as $product)
+                            <div>
+                                <img src="{{ asset($product->images[0]->image_url) }}" alt="{{ $product->name }}">
+                                <p>{{ $product->name }}</p>
+                                <span>Размер: {{ $characteristics[$product->pivot->characteristic_id]->name }}</span>
+                            </div>
+                        @endforeach
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 @endsection
