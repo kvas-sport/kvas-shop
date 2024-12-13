@@ -3,7 +3,7 @@
 
     <div class="product-info">
         <div class="slider">
-            <div class="image-wrapper__product-image">
+            <div class="image-wrapper__product-image ">
                 <img
                     src="{{ $product->images->isNotEmpty() ? asset($product->images[0]->image_url) : asset('/assets/image-placeholder.jpg') }}"
                     alt="Продукт">
@@ -32,8 +32,9 @@
                         @method('POST')
                         <input type="hidden" value="{{ Auth::id() }}" name="user_id">
                         <input type="hidden" value="{{ $product->id }}" name="product_id">
-                        <button type="submit" class="hidden-button"><img src="{{ asset('assets/heart.svg') }}"
-                                                                         alt="heart" class="heart-icon"></button>
+                        <button type="submit" class="hidden-button">
+                            <img src="{{ asset('assets/heart.svg') }}"alt="heart" class="heart-icon"> 
+                        </button>
                     </form>
                 </div>
             </div>
@@ -42,7 +43,7 @@
                     @csrf
                     @method('POST')
                     @if(count($product->characteristics) > 0)
-                        <p>Выберите размер RUS EUR US Таблица размеров</p>
+                        <p>Выберите размер RUS EUR US <span id="showPopup" class="pop-open">Таблица размеров</span></p>
                         <p>Количество на складе: <span
                                 id="quantity-display">{{ $product->characteristics[0]->amount }}</span></p>
                         <div class="size-radios">
@@ -66,7 +67,12 @@
         </div>
     </div>
 @endsection
-
+<section class="modal">
+   <div class="modal__content">
+        <img src="{{ asset('assets/ТБ.jpeg') }}" alt="Таблица размеров">
+    </div>
+  
+  </section>
 @section('scripts')
     <script src="{{ asset('scripts/amount.js') }}"></script>
 @endsection

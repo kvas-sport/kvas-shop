@@ -39,7 +39,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit">Добавить</button>
+            <button type="submit" class="add-to-cart">Добавить</button>
             @if ($errors->any())
                 @foreach($errors->all() as $error)
                     <p>{{ $error }}</p>

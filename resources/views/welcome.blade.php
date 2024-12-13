@@ -21,7 +21,11 @@
                             <img src="{{ asset('assets/одежда.jpg') }}" alt="Спортивная одежда" style="max-width:100%; max-height:360px;">
                             <figcaption><h3>Одежда</h3></figcaption>
                         </figure>
-                        <button class="button-details">Подробнее</button>
+                        <a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}">
+                            <button class="button-details">Подробнее
+                            </button>
+                        </a>
+
                     </div>
                 </div>
                 <div class="slider-item">
@@ -30,7 +34,11 @@
                             <img src="{{ asset('assets/обувь.jpg') }}" alt="Спортивная обувь" style="max-width:100%; max-height:360px;">
                             <figcaption><h3>Обувь</h3></figcaption>
                         </figure>
-                        <button class="button-details">Подробнее</button>
+                        <a href="{{ route('products.list', ['category_id' => 6]) }}">
+                            <button class="button-details">Подробнее
+                            </button>
+                        </a>
+
                     </div>
                 </div>
                 <div class="slider-item">
@@ -39,7 +47,9 @@
                             <img src="{{ asset('assets/инвентарь.jpg') }}" alt="Спортивный инвентарь" style="max-width:100%; max-height:360px;">
                             <figcaption><h3>Инвентарь</h3></figcaption>
                         </figure>
-                        <button class="button-details">Подробнее</button>
+                        <a href="{{ route('products.list', ['category_id' => 4]) }}">
+                            <button class="button-details">Подробнее</button>
+                        </a>
                     </div>
                 </div>
                 <div class="slider-item">
@@ -48,7 +58,9 @@
                             <img src="{{ asset('assets/питание.jpg') }}" alt="Спортивное питание" style="max-width:100%; max-height:360px;">
                             <figcaption><h3>Питание</h3></figcaption>
                         </figure>
-                        <button class="button-details">Подробнее</button>
+                        <a href="{{ route('products.list', ['category_id' => 5]) }}">
+                            <button class="button-details">Подробнее</button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -62,17 +74,24 @@
             <div class="category-item">
                 <img src="{{ asset('assets/Мужская.jpg') }}" alt="Категория 1" width="429" height="572.52">
                 <h3>Мужская</h3>
-                <button class="button-details">Подробнее</button>
+                <a href="{{ route('products.list', ['category_id' => 1]) }}">
+                    <button class="button-details">Подробнее</button>
+                </a>
             </div>
             <div class="category-item">
                 <img src="{{ asset('assets/Женская.jpg') }}" alt="Категория 2" width="429" height="572.52">
+        
                 <h3>Женская</h3>
-                <button class="button-details">Подробнее</button>
+                <a href="{{ route('products.list', ['category_id' => 2]) }}">
+                    <button class="button-details">Подробнее</button>
+                </a>
             </div>
             <div class="category-item">
                 <img src="{{ asset('assets/Детская.jpg') }}" alt="Категория 3" width="429" height="572.52">
                 <h3>Детская</h3>
-                <button class="button-details">Подробнее</button>
+                <a href="{{ route('products.list', ['category_id' => 3]) }}">
+                    <button class="button-details">Подробнее</button>
+                </a>
             </div>
         </div>
     </section>

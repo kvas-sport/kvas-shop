@@ -77,20 +77,22 @@
 
                         <div class="delivery-opt">
                             <p>Доставка</p>
-                            <span class="cost">Доставка почтой из РФ: 960₽</span>
+                            <span class="cost">Только по городу: 960₽</span>
                         </div>
 
                         <div class="price-total-fin">
                             <h4>Итог</h4>
                             <span class="cost">{{ $product->product->cost }} ₽</span>
                         </div>
+                        <div class="phone-and-adres">
+                            <h4>Оставьте данные</h4>
+                            <div class="form-group telph">
+                                <input type="tel" placeholder="Номер телефона" name="phone" required>
+                            </div>
 
-                        <div>
-                            <input type="tel" placeholder="Номер телефона" name="phone">
-                        </div>
-
-                        <div>
-                            <input type="text" placeholder="Адрес" name="address">
+                            <div class="form-group adresses">
+                                <input type="text" placeholder="Адрес" name="address" required>
+                            </div>
                         </div>
                     </div>
 

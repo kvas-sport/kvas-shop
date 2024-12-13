@@ -28,7 +28,7 @@
                 <button class="add-to-cart profile-btn" type="submit">Сохранить</button>
             </form>
             <div class="sub-button">
-                <a href="">Изменить пароль</a>
+                <!-- <a href="">Изменить пароль</a> -->
                 <a class="profile-leave" href="{{ route('logout') }}">Выход</a>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 @foreach($orders as $order)
                     <li>
                         @foreach($order->products as $product)
-                            <div>
+                            <div class="order-info-podr">
                                 <img src="{{ asset($product->images[0]->image_url) }}" alt="{{ $product->name }}">
                                 <p>{{ $product->name }}</p>
                                 <span>Размер: {{ $characteristics[$product->pivot->characteristic_id]->name }}</span>

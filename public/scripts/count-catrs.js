@@ -36,11 +36,9 @@ function calculateTotal() {
         if (priceValue && quantityInfo) {
             const price = parseFloat(priceValue);
             const quantity = parseInt(quantityInfo.textContent);
-            console.log(price)
 
             no_delivered += price * quantity;
             total += price * quantity ;
-            console.log(total)
         }
     });
     document.querySelector('.price-one .cost').textContent = no_delivered.toFixed(2) + ' ₽';
