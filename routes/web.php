@@ -1,5 +1,6 @@
 <?php
 
+
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CharacteristicController;
 use App\Http\Controllers\FavoriteController;
@@ -12,13 +13,11 @@ use App\Http\Controllers\NotificationController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/catalog', [CategoryController::class, 'index'])->name('products.index');
 Route::get('/catalog/products', [ProductController::class, 'category'])->name('products.list');
 Route::get('/catalog/{category}/product/{product}', [ProductController::class, 'show'])->name('products.show');
@@ -30,6 +29,8 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::get('/products/{product}', [ProductController::class, 'edit'])->name('products.edit')->middleware('admin');
 Route::patch('/products/{product}', [ProductController::class, 'update'])->name('products.update')->middleware('admin');
 Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('products.destroy')->middleware('admin');
+
+
 
 Route::post('/images/{product}', [ImageController::class, 'store'])->name('images.store')->middleware('admin');
 Route::delete('/images/{image}', [ImageController::class, 'destroy'])->name('images.destroy')->middleware('admin');
@@ -43,6 +44,8 @@ Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store')->middleware('auth');
 
 
+
+
 Route::get('/cart', [CartController::class, 'index'])->name('carts.index')->middleware('auth');
 Route::post('/cart', [CartController::class, 'store'])->name('carts.store')->middleware('auth');
 Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.destroy')->middleware('auth');
@@ -50,7 +53,7 @@ Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.d
 
 Route::get('/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
 Route::patch('/profile/{user}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
-
+Route::get('/profile/notifications', [NotificationController::class, 'index'])->name('notifications.index');
 
 Route::get('/admin', function() {
     return view('users.admin');
@@ -84,4 +87,4 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+

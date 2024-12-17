@@ -31,7 +31,7 @@ var closePopupButton = popup.querySelector('.button-close');
 
 
 openPopupButton.addEventListener('click', function (evt) {
-    evt.preventDefault(); 
+    evt.preventDefault();
     popup.classList.add('modal_show');
 });
 
@@ -41,3 +41,5 @@ document.addEventListener('keydown', function(evt){
         popup.classList.remove('modal_show');
     }
 });
+
+
