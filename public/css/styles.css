@@ -7,10 +7,10 @@
 }
 
 :root {
-    --primary: #ABABAB;
+    --primary: #A8B8B0;
     --text-color: #303030;
 
-    --border: #DFDFDF;
+    --border: #A8B8B0;
 
     --max-widht-container: 1380px;
 
@@ -29,6 +29,7 @@ body {
     padding: 0;
     margin: 0;
 }
+
 
 h1, h2, h3, h4, h5 {
     padding: 0;
@@ -1062,6 +1063,7 @@ th button {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    color: #A8B8B0;
 }
 .catalog-slider {
     position: relative;
@@ -1177,6 +1179,7 @@ th button {
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     margin-bottom: 20px;
+    color:#A8B8B0;
 }
 
 .category-grid {
@@ -1227,6 +1230,7 @@ th button {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    color: #A8B8B0;
 }
 
 .review-grid {
@@ -1311,6 +1315,7 @@ th button {
     text-decoration-skip-ink: none;
     margin-left: 265px;
     margin-bottom: 20px;
+    color: #A8B8B0;
 }
 
 .actions-slider {
@@ -1891,4 +1896,3 @@ footer {
 .wrapper__subscribe-block{
     flex-wrap: wrap;
 }
-

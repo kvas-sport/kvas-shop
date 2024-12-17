@@ -17,15 +17,16 @@
 <header class="header">
     <div class="container">
         <div class="header-content">
-            <h1><a href="/">Интернет-магазин CASUMI</a></h1>
+            <h1><a href="/"><img src="{{ asset('assets/logo.svg') }}" alt="Логотип CASUMI"></a></h1>
             <div class="wrapper__header">
                 <form action="{{ route('products.search') }}" class="wrapper__search-input">
                     <input class="search-input" type="text" name="search" placeholder="Поиск" value="{{ request('search') }}">
                 </form>
             </div>
             <div class="social-logoes">
-                <a href=""><img class="social-logo" src="{{ asset('assets/email.svg') }}" alt="email"></a>
-                <a href=""><img class="social-logo" src={{ asset("assets/telegram.svg") }} alt="telegram"></a>
+
+            <a href="#subscribe-block"><img class="social-logo" src="{{ asset('assets/email.svg') }}" alt="email"></a>
+            <a href="#subscribe-block"><img class="social-logo" src={{ asset("assets/telegram.svg") }} alt="telegram"></a>
             </div>
         </div>
     </div>
@@ -66,8 +67,8 @@
     </div>
 </main>
 <footer>
-    <div class="subscribe-block">
-        <div class="wrapper__subscribe-block">
+          <div id="subscribe-block" class="subscribe-block">
+            <div class="wrapper__subscribe-block">
 
             <div class="footer-input-block">
                 <div>
@@ -86,7 +87,7 @@
         <div class="footer-nav">
             <div class="footer-nav-items">
                 <div class="footer-nav-item footer-nav-logo-block">
-                    <h3>Интернет-магазин CASUMI</h3>
+                    <h3><a href="/"><img src="{{ asset('assets/logo.svg') }}" alt="Логотип CASUMI"></a></h3>
                     <ul>
                         <li>Магазин спортивной одежды, инвентаря, питания с доставкой по всей стране</li>
                     </ul>
