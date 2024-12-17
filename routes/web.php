@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CharacteristicController;
 use App\Http\Controllers\FavoriteController;
@@ -10,13 +11,15 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+=======
+>>>>>>> master
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+<<<<<<< HEAD
 
 Route::get('/catalog', [CategoryController::class, 'index'])->name('products.index');
 Route::get('/catalog/products', [ProductController::class, 'category'])->name('products.list');
@@ -40,6 +43,8 @@ Route::post('/orders', [OrderController::class, 'store'])->name('orders.store')-
 
 Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index')->middleware('auth');
 Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store')->middleware('auth');
+
+
 
 
 Route::get('/cart', [CartController::class, 'index'])->name('carts.index')->middleware('auth');
@@ -82,3 +87,5 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+=======
+>>>>>>> master
