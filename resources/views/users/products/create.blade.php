@@ -13,19 +13,19 @@
             @method('POST')
             <div class="form-group">
                 <label for="name">Название:</label>
-                <input id="name" type="text" name="name">
+                <input id="name" type="text" value="{{ old('name') }}" name="name">
             </div>
             <div class="form-group admin-opt">
                 <label for="description">Описание:</label>
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="description" value="{{ old('description') }}" ></textarea>
             </div>
             <div class="form-group">
                 <label for="amount">Количество:</label>
-                <input id="amount" type="number" name="amount">
+                <input id="amount" type="number" name="amount" value="{{ old('amount') }}" >
             </div>
             <div class="form-group">
                 <label for="cost">Цена:</label>
-                <input id="cost" type="number" name="cost">
+                <input id="cost" type="number" name="cost" value="{{ old('cost') }}" >
             </div>
             <div class="form-group">
                 <label for="image_url">Картинка:</label>

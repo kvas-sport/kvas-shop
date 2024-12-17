@@ -22,7 +22,7 @@ class CartController extends Controller
         $data = request()->validate([
             'user_id' => 'required|integer|exists:users,id',
             'product_id' => 'required|integer|exists:products,id',
-            'characteristic_id' => 'required|integer|exists:characteristics,id',
+            'characteristic_id' => 'integer|exists:characteristics,id',
         ]);
 
         $data['amount'] = 1;

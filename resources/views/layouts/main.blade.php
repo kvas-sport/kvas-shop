@@ -33,11 +33,30 @@
         <div class="container">
             <div class="nav-items">
                 <div class="wrapper__nav-items">
-                    <a href="{{ route('products.index') }}" class="nav-item catalog-button">Каталог</a>
-                    <a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}" class="nav-item">Спортивная одежда</a>
-                    <a href="{{ route('products.list', ['category_id' => 4]) }}" class="nav-item">Инвентарь</a>
-                    <a href="{{ route('products.list', ['category_id' => 5]) }}" class="nav-item">Питание</a>
-                    <a href="{{ route('products.list', ['category_id' => 6]) }}" class="nav-item">Обувь</a>
+                    <a href="{{ route('products.index') }}"
+                       class="nav-item catalog-button {{ request()->routeIs('products.index') ? 'active' : '' }}">
+                       Каталог
+                    </a>
+
+                    <a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}"
+                       class="nav-item {{ request()->input('category_id') && collect(request()->input('category_id'))->intersect([1, 2, 3])->isNotEmpty() ? 'active' : '' }}">
+                        Спортивная одежда
+                    </a>
+
+                    <a href="{{ route('products.list', ['category_id' => 4]) }}"
+                       class="nav-item {{ request()->input('category_id') == 4 ? 'active' : '' }}">
+                        Инвентарь
+                    </a>
+
+                    <a href="{{ route('products.list', ['category_id' => 5]) }}"
+                       class="nav-item {{ request()->input('category_id') == 5 ? 'active' : '' }}">
+                        Питание
+                    </a>
+
+                    <a href="{{ route('products.list', ['category_id' => 6]) }}"
+                       class="nav-item {{ request()->input('category_id') == 6 ? 'active' : '' }}">
+                        Обувь
+                    </a>
                 </div>
                 <div class="nav-buttons">
                     @if(\Illuminate\Support\Facades\Auth::check())
@@ -75,9 +94,10 @@
                     <input type="email" placeholder="Email">
                 </div>
                 <div class="foter-text-con">
-                    <p>Подписывайся на рассылку и получай уведомления на акции</p>
-                    <button>Подписаться</button>
-                </div>
+    <p>Подписывайся на рассылку и получай уведомления на акции</p>
+    <button>Подписаться</button>
+</div>
+
             </div>
             <img class="footer-image" src={{ asset("assets/footer-bg.png") }} alt="footer-bg-image">
         </div>
