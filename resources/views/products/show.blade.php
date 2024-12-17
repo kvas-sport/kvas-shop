@@ -33,7 +33,7 @@
                         <input type="hidden" value="{{ Auth::id() }}" name="user_id">
                         <input type="hidden" value="{{ $product->id }}" name="product_id">
                         <button type="submit" class="hidden-button">
-                            <img src="{{ asset('assets/heart.svg') }}"alt="heart" class="heart-icon"> 
+                            <img src="{{ asset('assets/heart.svg') }}"alt="heart" class="heart-icon">
                         </button>
                     </form>
                 </div>
@@ -71,7 +71,7 @@
    <div class="modal__content">
         <img src="{{ asset('assets/ТБ.jpeg') }}" alt="Таблица размеров">
     </div>
-  
+
   </section>
 @section('scripts')
     <script src="{{ asset('scripts/amount.js') }}"></script>

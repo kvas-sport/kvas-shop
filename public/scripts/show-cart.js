@@ -11,3 +11,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+document.addEventListener('DOMContentLoaded', function () {
+    const sliders = document.querySelectorAll('.slider');
+
+    sliders.forEach(slider => {
+        const mainImage = slider.querySelector('.main-image');
+        const thumbnails = slider.querySelectorAll('.slider-image');
+
+        thumbnails.forEach(thumbnail => {
+            thumbnail.addEventListener('click', function (event) {
+                event.preventDefault();
+                const fullImageUrl = this.getAttribute('data-full');
+                mainImage.src = fullImageUrl; // Меняем главное изображение на выбранное
+            });
+        });
+    });
+});
