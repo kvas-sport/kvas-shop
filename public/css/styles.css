@@ -8,9 +8,8 @@
 
 :root {
     --primary: #A8B8B0;
-    --primary-rgb: 147, 164, 162;
-    --text-color: #333333;
-    --border: #DFDFDF;
+    --text-color: #303030;
+    --border: #A8B8B0;
     --max-widht-container: 1380px;
     --gotica: "Gothic A1", sans-serif; /*Добавил Кирилл*/
 }
@@ -27,6 +26,7 @@ body {
     padding: 0;
     margin: 0;
 }
+
 
 h1, h2, h3, h4, h5 {
     padding: 0;
@@ -1091,6 +1091,7 @@ th button {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    color: #A8B8B0;
 }
 .catalog-slider {
     position: relative;
@@ -1206,6 +1207,7 @@ th button {
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     margin-bottom: 20px;
+    color:#A8B8B0;
 }
 
 .category-grid {
@@ -1256,6 +1258,7 @@ th button {
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
+    color: #A8B8B0;
 }
 
 .review-grid {
@@ -1340,6 +1343,7 @@ th button {
     text-decoration-skip-ink: none;
     margin-left: 265px;
     margin-bottom: 20px;
+    color: #A8B8B0;
 }
 
 .actions-slider {
