@@ -90,29 +90,37 @@ class ProductController extends Controller
     }
 
     public function store(): RedirectResponse
-    {
-        $data = request()->validate([
-            'name' => 'required|min:3|max:255',
-            'description' => 'required|min:20|max:4096',
-            'amount' => 'required|integer|min:1',
-            'cost' => 'required|integer|min:1',
-            'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-            'category_id' => 'required|exists:categories,id',
+{
+    $data = request()->validate([
+        'name' => 'required|min:3|max:255',
+        'description' => 'required|min:20|max:4096',
+        'amount' => 'required|integer|min:1',
+        'cost' => 'required|integer|min:1',
+        'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+        'category_id' => 'required|exists:categories,id',
+        'sizes' => ['required', 'array'], // Убедимся, что sizes — это массив
+        'sizes.*' => ['required', 'integer', 'min:1'], // К
+    ]);
+
+    dd($data['sizes']);
+
+
+    if (isset($data['images']) && count($data['images']) > 4) {
+        return back()->withErrors(['images' => 'Изображений не может быть больше 4']);
+    }
+
+    DB::transaction(function () use ($data) {
+        // Создание продукта
+        $product = Product::create([
+            'name' => $data['name'],
+            'description' => $data['description'],
+            'amount' => $data['amount'],
+            'cost' => $data['cost'],
+            'category_id' => $data['category_id'],
         ]);
 
-        if (count($data['images']) > 4) {
-            return back()->withErrors(['images' => 'Изображений не может быть больше 4']);
-        }
-
-        DB::transaction(function () use ($data) {
-            $product = Product::create([
-                'name' => $data['name'],
-                'description' => $data['description'],
-                'amount' => $data['amount'],
-                'cost' => $data['cost'],
-                'category_id' => $data['category_id'],
-            ]);
-
+        // Добавление изображений
+        if (isset($data['images'])) {
             foreach ($data['images'] as $image) {
                 $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
 
@@ -122,10 +130,20 @@ class ProductController extends Controller
 
                 $product->images()->create(['image_url' => $imagePath]);
             }
-        }, 3);
+        }
 
-        return redirect()->back()->with(['message' => 'Успешно добавлено']);
-    }
+        // Создание характеристики
+        $product->characteristics()->create([
+            'name' => $data['category_id'], // Значение из формы
+            'amount' => $data['amount'],           // Используем количество продукта
+        ]);
+    }, 3);
+
+
+
+    return redirect()->back()->with(['message' => 'Успешно добавлено']);
+}
+
 
     public function update(Product $product): RedirectResponse
     {
