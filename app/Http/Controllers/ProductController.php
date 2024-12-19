@@ -90,59 +90,58 @@ class ProductController extends Controller
     }
 
     public function store(): RedirectResponse
-{
-    $data = request()->validate([
-        'name' => 'required|min:3|max:255',
-        'description' => 'required|min:20|max:4096',
-        'amount' => 'required|integer|min:1',
-        'cost' => 'required|integer|min:1',
-        'images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
-        'category_id' => 'required|exists:categories,id',
-        'sizes' => ['required', 'array'], // Убедимся, что sizes — это массив
-        'sizes.*' => ['required', 'integer', 'min:1'], // К
-    ]);
-
-    dd($data['sizes']);
-
-
-    if (isset($data['images']) && count($data['images']) > 4) {
-        return back()->withErrors(['images' => 'Изображений не может быть больше 4']);
-    }
-
-    DB::transaction(function () use ($data) {
-        // Создание продукта
-        $product = Product::create([
-            'name' => $data['name'],
-            'description' => $data['description'],
-            'amount' => $data['amount'],
-            'cost' => $data['cost'],
-            'category_id' => $data['category_id'],
+    {
+        $data = request()->validate([
+            'name' => 'required|min:3|max:255',
+            'description' => 'required|min:20|max:4096',
+            'cost' => 'required|integer|min:1',
+            'images' => 'array|max:4', // Ограничение на 4 изображения
+            'images.*' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
+            'sizes' => 'nullable', // Массив размеров необязателен
+            'sizes.*' => 'min:1', // Все размеры должны быть положительными числами
         ]);
-
-        // Добавление изображений
-        if (isset($data['images'])) {
-            foreach ($data['images'] as $image) {
-                $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
-
-                $image->move(public_path('assets'), $imageName);
-
-                $imagePath = 'assets/' . $imageName;
-
-                $product->images()->create(['image_url' => $imagePath]);
-            }
+       dd(request()->all());
+    
+        try {
+            DB::transaction(function () use ($data) {
+                // Создаем продукт
+                $product = Product::create([
+                    'name' => $data['name'],
+                    'description' => $data['description'],
+                    'amount' => '1',
+                    'cost' => $data['cost'],
+                    'category_id' => $data['category_id'],
+                ]);
+    
+                // Обрабатываем изображения
+                if (!empty($data['images'])) {
+                    foreach ($data['images'] as $image) {
+                        $imageName = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+                        $image->move(public_path('assets'), $imageName);
+                        $imagePath = 'assets/' . $imageName;
+    
+                        $product->images()->create(['image_url' => $imagePath]);
+                    }
+                }
+    
+                // Обрабатываем размеры
+                if (!empty($data['sizes'])) {
+                    foreach ($data['sizes'] as $size => $quantity) {
+                        $product->characteristics()->create([
+                            'name' => $size,
+                            'amount' => $quantity,
+                        ]);
+                    }
+                }
+            });
+    
+            return redirect()->back()->with(['message' => 'Успешно добавлено']);
+        } catch (\Exception $e) {
+            return back()->withErrors(['error' => 'Произошла ошибка при сохранении продукта.']);
         }
-
-        // Создание характеристики
-        $product->characteristics()->create([
-            'name' => $data['category_id'], // Значение из формы
-            'amount' => $data['amount'],           // Используем количество продукта
-        ]);
-    }, 3);
-
-
-
-    return redirect()->back()->with(['message' => 'Успешно добавлено']);
-}
+    }
+    
 
 
     public function update(Product $product): RedirectResponse
