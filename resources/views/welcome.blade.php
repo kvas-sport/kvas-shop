@@ -3,8 +3,7 @@
 @section('content')
     <section class="head-cintent">
         <div class="head-content-text">
-            <h1>Спортивный интернет - магазин</h1>
-            <p>Качественная спортивная одежда и инвентарь, которые помогут вам достичь новых высот в тренировках.</p>
+        <img src="{{ asset('assets/logo2.svg') }}" alt="Логотип спортивного интернет-магазина" class="logo">            <p>Качественная спортивная одежда и инвентарь, которые помогут вам достичь новых высот в тренировках.</p>
         </div>
 
         <div class="head-content-image">
@@ -23,8 +22,7 @@
                             <figcaption><h3>Одежда</h3></figcaption>
                         </figure>
                         <a href="{{ route('products.list', ['category_id' => [1, 2, 3]]) }}">
-                            <button class="button-details">Подробнее
-                            </button>
+                            <button>Подробнее</button>
                         </a>
 
                     </div>
@@ -36,8 +34,7 @@
                             <figcaption><h3>Обувь</h3></figcaption>
                         </figure>
                         <a href="{{ route('products.list', ['category_id' => 6]) }}">
-                            <button class="button-details">Подробнее
-                            </button>
+                            <button>Подробнее</button>
                         </a>
 
                     </div>
@@ -49,7 +46,7 @@
                             <figcaption><h3>Инвентарь</h3></figcaption>
                         </figure>
                         <a href="{{ route('products.list', ['category_id' => 4]) }}">
-                            <button class="button-details">Подробнее</button>
+                            <button>Подробнее</button>
                         </a>
                     </div>
                 </div>
@@ -60,7 +57,7 @@
                             <figcaption><h3>Питание</h3></figcaption>
                         </figure>
                         <a href="{{ route('products.list', ['category_id' => 5]) }}">
-                            <button class="button-details">Подробнее</button>
+                            <button>Подробнее</button>
                         </a>
                     </div>
                 </div>
@@ -98,37 +95,44 @@
     </section>
 
     <section id="reviews">
-        <h2>Отзывы</h2>
-        <div class="review-grid">
-            <div class="review-item">
-                <img src="{{ asset('assets/1.jpg') }}" alt="Отзыв 1" class="review-image">
-                <div class="review-text">
-                    <h3>Имя Фамилия</h3>
-                    <p>Заказывал 8 мая, сегодня забрал с почты посылку 20 мая. Всё в наличии, всё целое. Спасибо за работу.
-                        Александр .С. 40 лет.</p>
+    <h2>Отзывы</h2>
+    <div class="review-grid">
+        <div class="review-item">
+            <img src="{{ asset('assets/1.jpg') }}" alt="Отзыв 1" class="review-image">
+            <div class="review-text">
+                <h3>Алина Мартынова</h3>
+                <p>Заказывал 8 мая, сегодня забрала с почты посылку 20 мая. Всё в наличии, всё целое.</p>
+                <div class="hidden-review">
+                    <p>Это продолжение отзыва. Я очень доволен покупкой и рекомендую всем!</p>
                 </div>
-                <a href="#" class="read-more">Читать ещё</a>
             </div>
-            <div class="review-item">
-                <img src="{{ asset('assets/2.jpg') }}" alt="Отзыв 2" class="review-image">
-                <div class="review-text">
-                    <h3>Имя Фамилия</h3>
-                    <p>Заказывал 8 мая, сегодня забрал с почты посылку 20 мая. Всё в наличии, всё целое. Спасибо за работу.
-                        Александр .С. 40 лет.</p>
-                </div>
-                <a href="#" class="read-more">Читать ещё</a>
-            </div>
-            <div class="review-item">
-                <img src="{{ asset('assets/3.jpg') }}" alt="Отзыв 3" class="review-image">
-                <div class="review-text">
-                    <h3>Имя Фамилия</h3>
-                    <p>Заказывал 8 мая, сегодня забрал с почты посылку 20 мая. Всё в наличии, всё целое. Спасибо за работу.
-                        Александр .С. 40 лет.</p>
-                </div>
-                <a href="#" class="read-more">Читать ещё</a>
-            </div>
+            <a href="#" class="read-more">Читать ещё</a>
         </div>
-    </section>
+        <div class="review-item">
+            <img src="{{ asset('assets/2.jpg') }}" alt="Отзыв 2" class="review-image">
+            <div class="review-text">
+                <h3>Гульшат Насибуллина</h3>
+                <p>Отличный сервис! Быстрая доставка и качественный товар.</p>
+                <div class="hidden-review">
+                    <p>Я был приятно удивлён качеством упаковки и вниманием к деталям.</p>
+                </div>
+            </div>
+            <a href="#" class="read-more">Читать ещё</a>
+        </div>
+        <div class="review-item">
+            <img src="{{ asset('assets/3.jpg') }}" alt="Отзыв 3" class="review-image">
+            <div class="review-text">
+                <h3>Ксения Стрельникова</h3>
+                <p>Не первый раз заказываю здесь и всегда остаюсь доволен.</p>
+                <div class="hidden-review">
+                    <p>Каждый раз получаю отличное обслуживание и качественные товары.</p>
+                </div>
+            </div>
+            <a href="#" class="read-more">Читать ещё</a>
+        </div>
+    </div>
+</section>
+
 
 
     <section id="actions">
@@ -167,4 +171,5 @@
             <div class="actions-pagination"></div>
         </div>
     </section>
+    <script src="{{ asset('scripts/hiding.js') }}"></script>
 @endsection
