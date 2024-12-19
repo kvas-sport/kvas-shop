@@ -106,163 +106,167 @@
 
 @section('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const categorySelect = document.getElementById('category_id');
-        const sizesBlock = document.getElementById('sizes-block');
-        const oneSizeBlock = document.getElementById('one-size-block');
-        const oneSizeCheckbox = document.getElementById('one-size');
-        const oneSizeAmount = document.getElementById('one-size-amount');
-        const sizeCheckboxes = document.querySelectorAll('.size-checkbox');
-        const customSizeCheckbox = document.getElementById('custom_size_checkbox');
-        const customSizesBlock = document.getElementById('custom_sizes_block');
-        const customSizesContainer = document.getElementById('custom-sizes-container');
-        const addCustomSizeButton = document.getElementById('add-custom-size');
-        const form = document.querySelector('.registerForm');
+document.addEventListener('DOMContentLoaded', function () {
+    const categorySelect = document.getElementById('category_id');
+    const sizesBlock = document.getElementById('sizes-block');
+    const oneSizeBlock = document.getElementById('one-size-block');
+    const oneSizeCheckbox = document.getElementById('one-size');
+    const oneSizeAmount = document.getElementById('one-size-amount');
+    const sizeCheckboxes = document.querySelectorAll('.size-checkbox');
+    const customSizeCheckbox = document.getElementById('custom_size_checkbox');
+    const customSizesBlock = document.getElementById('custom_sizes_block');
+    const customSizesContainer = document.getElementById('custom-sizes-container');
+    const addCustomSizeButton = document.getElementById('add-custom-size');
+    const form = document.querySelector('.registerForm');
 
-        // При изменении категории
-        categorySelect.addEventListener('change', function () {
-            const selectedCategory = categorySelect.options[categorySelect.selectedIndex].text.toLowerCase();
+    // При изменении категории
+    categorySelect.addEventListener('change', function () {
+        const selectedCategory = categorySelect.options[categorySelect.selectedIndex].text.toLowerCase();
 
-            if (selectedCategory.includes('одежда')) {
-                sizesBlock.style.display = 'block';
-                oneSizeBlock.style.display = 'none';
-                resetOneSize();
-            } else {
-                sizesBlock.style.display = 'none';
-                oneSizeBlock.style.display = 'block';
-                resetSizes();
-            }
-        });
-
-        // Сброс выбора размеров
-        function resetSizes() {
-            sizeCheckboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-                checkbox.nextElementSibling.disabled = true;
-                checkbox.nextElementSibling.value = ''; // Очистка полей
-            });
+        if (selectedCategory.includes('одежда')) {
+            sizesBlock.style.display = 'block';
+            oneSizeBlock.style.display = 'none';
+            resetOneSize();
+        } else {
+            sizesBlock.style.display = 'none';
+            oneSizeBlock.style.display = 'block';
+            resetSizes();
         }
+    });
 
-        // Сброс "Один размер"
-        function resetOneSize() {
-            oneSizeCheckbox.checked = false;
+    // Сброс выбора размеров
+    function resetSizes() {
+        sizeCheckboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+            checkbox.nextElementSibling.disabled = true;
+            checkbox.nextElementSibling.value = ''; // Очистка полей
+        });
+    }
+
+    // Сброс "Один размер"
+    function resetOneSize() {
+        oneSizeCheckbox.checked = false;
+        oneSizeAmount.disabled = true;
+        oneSizeAmount.value = '';
+    }
+
+    // Обработка чекбокса "Один размер"
+    oneSizeCheckbox.addEventListener('change', function () {
+        if (oneSizeCheckbox.checked) {
+            disableAllSizes();
+            oneSizeAmount.disabled = false;
+        } else {
+            enableAllSizes();
             oneSizeAmount.disabled = true;
             oneSizeAmount.value = '';
         }
-
-        // Обработка чекбокса "Один размер"
-        oneSizeCheckbox.addEventListener('change', function () {
-            if (oneSizeCheckbox.checked) {
-                disableAllSizes();
-                oneSizeAmount.disabled = false;
-            } else {
-                enableAllSizes();
-                oneSizeAmount.disabled = true;
-                oneSizeAmount.value = '';
-            }
-        });
-
-        // Отключить все размеры
-        function disableAllSizes() {
-            sizeCheckboxes.forEach((checkbox) => {
-                checkbox.checked = false;
-                checkbox.nextElementSibling.disabled = true;
-                checkbox.nextElementSibling.value = ''; // Очистка полей
-            });
-        }
-
-        // Включить все размеры
-        function enableAllSizes() {
-            sizeCheckboxes.forEach((checkbox) => {
-                checkbox.nextElementSibling.disabled = false;
-            });
-        }
-
-        // Обработка изменения состояния чекбоксов для размеров
-        sizeCheckboxes.forEach((checkbox) => {
-            checkbox.addEventListener('change', function () {
-                const sizeInput = checkbox.nextElementSibling; // Ссылка на поле ввода для количества
-                if (checkbox.checked) {
-                    sizeInput.disabled = false; // Включаем поле ввода
-                } else {
-                    sizeInput.disabled = true; // Отключаем поле ввода
-                    sizeInput.value = ''; // Очищаем поле ввода
-                }
-            });
-        });
-
-        customSizeCheckbox.addEventListener('change', function () {
-            if (customSizeCheckbox.checked) {
-                customSizesBlock.style.display = 'block';
-            } else {
-                customSizesBlock.style.display = 'none';
-                // Удаляем ранее добавленные кастомные размеры
-                customSizesContainer.innerHTML = '';
-            }
-        });
-
-        // Функция для добавления нового поля кастомного размера
-        let customSizeCount = 0;
-
-        addCustomSizeButton.addEventListener('click', function () {
-            customSizeCount++;
-
-            const customSizeDiv = document.createElement('div');
-            customSizeDiv.classList.add('custom-size');
-
-            const customSizeName = document.createElement('input');
-            customSizeName.type = 'text';
-            customSizeName.name = `sizes[custom_name_${customSizeCount}]`;
-            customSizeName.placeholder = 'Введите название характеристики';
-
-            const customSizeQuantity = document.createElement('input');
-            customSizeQuantity.type = 'number';
-            customSizeQuantity.name = `sizes[custom_quantity_${customSizeCount}]`;
-            customSizeQuantity.placeholder = 'Введите количество товара';
-
-            customSizeDiv.appendChild(customSizeName);
-            customSizeDiv.appendChild(customSizeQuantity);
-            customSizesContainer.appendChild(customSizeDiv);
-        });
-        form.addEventListener('submit', function (event) {
-    // Логирование данных формы перед отправкой
-    const formData = new FormData(form);
-    for (let [name, value] of formData.entries()) {
-        console.log(name, value);  // Логируем каждое поле и его значение
-    }
-});
-
-
-        form.addEventListener('submit', function (event) {
-    // Проверяем, если установлен чекбокс "Свои размеры"
-    if (customSizeCheckbox.checked) {
-        // Удаляем старые скрытые поля с именами custom_name
-        const hiddenInputs = form.querySelectorAll('input[name^="sizes[custom_name_"]"]');
-        hiddenInputs.forEach(input => input.remove());
-
-        const customSizeDivs = customSizesContainer.querySelectorAll('.custom-size');
-        customSizeDivs.forEach((customSizeDiv) => {
-            const customName = customSizeDiv.querySelectorAll('input')[0].value.trim(); // Название характеристики
-            const customQuantity = customSizeDiv.querySelectorAll('input')[1].value.trim(); // Количество
-
-            if (customName && customQuantity) {
-                // Создаем скрытое поле с названием характеристики в качестве имени
-                const customInput = document.createElement('input');
-                customInput.type = 'hidden';
-                customInput.name = `sizes[${customName}]`;  // Используем название характеристики как имя поля
-                customInput.value = customQuantity; // Значение — это количество
-
-                form.appendChild(customInput); // Добавляем скрытое поле в форму
-                
-                // Для отладки: логируем данные перед отправкой
-                console.log('Создано скрытое поле для custom_name:', customName, ' с количеством:', customQuantity);
-            }
-        });
-    }
-});
-
-
     });
+
+    // Отключить все размеры
+    function disableAllSizes() {
+        sizeCheckboxes.forEach((checkbox) => {
+            checkbox.checked = false;
+            checkbox.nextElementSibling.disabled = true;
+            checkbox.nextElementSibling.value = ''; // Очистка полей
+        });
+    }
+
+    // Включить все размеры
+    function enableAllSizes() {
+        sizeCheckboxes.forEach((checkbox) => {
+            checkbox.nextElementSibling.disabled = false;
+        });
+    }
+
+    // Обработка изменения состояния чекбоксов для размеров
+    sizeCheckboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', function () {
+            const sizeInput = checkbox.nextElementSibling; // Ссылка на поле ввода для количества
+            if (checkbox.checked) {
+                sizeInput.disabled = false; // Включаем поле ввода
+            } else {
+                sizeInput.disabled = true; // Отключаем поле ввода
+                sizeInput.value = ''; // Очищаем поле ввода
+            }
+        });
+    });
+
+    // Обработка чекбокса "Свои размеры"
+    customSizeCheckbox.addEventListener('change', function () {
+        if (customSizeCheckbox.checked) {
+            customSizesBlock.style.display = 'block';
+        } else {
+            customSizesBlock.style.display = 'none';
+            // Удаляем ранее добавленные кастомные размеры
+            customSizesContainer.innerHTML = '';
+        }
+    });
+
+    // Функция для добавления нового поля кастомного размера
+    let customSizeCount = 0;
+
+    addCustomSizeButton.addEventListener('click', function () {
+        customSizeCount++;
+
+        const customSizeDiv = document.createElement('div');
+        customSizeDiv.classList.add('custom-size');
+
+        const customSizeName = document.createElement('input');
+        customSizeName.type = 'text';
+        customSizeName.name = `custom_name_${customSizeCount}`;
+        customSizeName.placeholder = 'Введите название характеристики';
+
+        const customSizeQuantity = document.createElement('input');
+        customSizeQuantity.type = 'number';
+        customSizeQuantity.name = `custom_quantity_${customSizeCount}`;
+        customSizeQuantity.placeholder = 'Введите количество товара';
+
+        customSizeDiv.appendChild(customSizeName);
+        customSizeDiv.appendChild(customSizeQuantity);
+        customSizesContainer.appendChild(customSizeDiv);
+    });
+
+    // Когда форма отправляется, собираем данные о кастомных размерах и добавляем их в форму как скрытые поля
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();  // Предотвращаем стандартную отправку формы
+
+        // Сбор кастомных размеров
+        const customSizes = {};
+        const customSizeNames = form.querySelectorAll('[name^="custom_name_"]');
+        const customSizeQuantities = form.querySelectorAll('[name^="custom_quantity_"]');
+
+        customSizeNames.forEach((nameInput, index) => {
+            const quantityInput = customSizeQuantities[index];
+            const sizeName = nameInput.value.trim();
+            const sizeQuantity = quantityInput.value.trim();
+
+            if (sizeName && sizeQuantity) {
+                customSizes[sizeName] = sizeQuantity;
+            }
+        });
+
+        // Убираем старые данные о кастомных размерах из формы
+        form.querySelectorAll('[name^="custom_name_"], [name^="custom_quantity_"]').forEach(input => {
+            input.remove();
+        });
+
+        // Добавляем кастомные размеры как скрытые поля
+        for (const sizeName in customSizes) {
+            const quantity = customSizes[sizeName];
+
+            const nameInput = document.createElement('input');
+            nameInput.type = 'hidden';
+            nameInput.name = `sizes[${sizeName}]`;  // Имя скрытого поля: sizes[название]
+            nameInput.value = quantity;  // Значение скрытого поля: количество
+
+            form.appendChild(nameInput);
+        }
+
+        // Отправляем форму
+        form.submit();
+    });
+});
+
 
 </script>
 @endsection
