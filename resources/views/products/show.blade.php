@@ -76,3 +76,7 @@
 @section('scripts')
     <script src="{{ asset('scripts/amount.js') }}"></script>
 @endsection
+
+@section('scripts')
+    <script src="{{ asset('scripts/amo.js') }}"></script>
+@endsection
