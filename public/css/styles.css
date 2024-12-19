@@ -683,21 +683,26 @@ footer {
 
 .size-group {
     margin-bottom: 20px;
+    margin-top: 20px;
 }
 .size-radios{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 10px;
+    margin: 15px 0;
+}
+.form_radio_btn {
+    position: relative;
 }
 .form_radio_btn label {
-    display:flex;
+    display:inline-block;
     justify-content: center;
     max-width: 40px;
-    padding: 15px 20px;
+    padding: 10px 15px;
     border-radius: 10px;
     border: 1px solid var(--primary);
-    border-radius: 2px;
+    border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: transparent;
@@ -714,6 +719,24 @@ footer {
     background-color: #6c6c6c;
     color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.form_radio_btn input[type=radio]:checked + label {
+    background: #333;
+    color: white;
+}
+
+.add-to-cart {
+    width: 100%;
+    padding: 15px;
+    background-color:#A8B8B0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.add-to-cart:hover {
+    background: #ABABAB;
 }
 
 .size-radios input[type='radio']{
@@ -733,10 +756,18 @@ footer {
 
 .show-text{
     font-size: clamp(12px, 2vw, 20px);
+    color: #666;
+    line-height: 1.5;
 }
 
 
 /*Избранное стили - Кирилл*/
+
+.heart {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
 
 .heart button{
     cursor: pointer;
@@ -744,6 +775,8 @@ footer {
 
 .heart-icon {
     transition: all 0.3s ease;
+    width: 24px;
+    height: 24px;
 }
 .heart-icon:hover,
 .heart-icon:focus {
@@ -1548,7 +1581,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .modal_show {
@@ -1741,14 +1774,33 @@ footer {
     /* карточка товара */
     .product-info{
         flex-wrap: wrap;
-        gap:0;
-        justify-content: center;
+        gap:32px;
+        justify-content: space-between;
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        margin-bottom: 20px;
+
+    }
+    .name_card {
+        font-size: 24px;
+        margin: 0 0 10px 0;
+    }
+    .cost {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
     }
     .show-product-info{
         justify-content: start;
     }
-    .image-wrapper__product-image img{
+    
+    .image-wrapper__product-image {
         width: 100%;
+        height: 600px;
+        overflow: hidden;
     }
     /* админка */
     .admin-select h4{
@@ -1862,6 +1914,15 @@ footer {
     /* Модалка */
     .modal__content{
        width: auto;
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       background: white;
+       padding: 20px;
+       max-width: 90%;
+       max-height: 90%;
+       overflow: auto;
     }
     .modal__content img{
 
@@ -1878,9 +1939,39 @@ footer {
 
     .slider{
         flex-direction: column;
+        position: relative;
+        width: 50%;
     }
     .preview-list{
-        flex-direction: row;
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: -100px;
+        top: 0;
+        gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .preview-list li {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: border-color 0.3s;
+    }
+    .preview-list li:hover {
+        border-color: #333;
+    }
+
+    .preview-list img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
+    .product-info-wrapper {
+        flex: 1;
     }
     /* Корзина */
     .order .product-image {
@@ -1944,3 +2035,157 @@ footer {
     cursor: pointer; /* Устанавливаем курсор pointer для кнопки */
 }
 
+ .product-info {
+            display: flex;
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .slider {
+            position: relative;
+            width: 50%;
+        }
+
+        .image-wrapper__product-image {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        
+
+        .preview-list {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: -100px;
+            top: 0;
+            gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .preview-list li {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .preview-list li:hover {
+            border-color: #333;
+        }
+
+        .preview-list img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .product-info-wrapper {
+            flex: 1;
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .name_card {
+            font-size: 24px;
+            margin: 0 0 10px 0;
+        }
+
+        .cost {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .show-text {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .heart {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .heart-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .size-group {
+            margin-top: 20px;
+        }
+
+        .size-radios {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .form_radio_btn {
+            position: relative;
+        }
+
+        .form_radio_btn input[type=radio] {
+            display: none;
+        }
+
+        .form_radio_btn label {
+            display: inline-block;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form_radio_btn input[type=radio]:checked + label {
+            background: #333;
+            color: white;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 15px;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .add-to-cart:hover {
+            background: #6c6c6c;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal__content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            overflow: auto;
+        }

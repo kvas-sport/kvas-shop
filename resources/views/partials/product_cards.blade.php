@@ -1,7 +1,9 @@
 @foreach($products as $product)
     <div class="product-card">
         <div class="product-image">
-            <img src="{{ $product->images->isNotEmpty() ? asset($product->images[0]->image_url) : asset('/assets/image-placeholder.jpg') }}" alt="Продукт">
+            <a href="{{ route('products.show', [$product->category_id, $product->id]) }}">
+                <img src="{{ $product->images->isNotEmpty() ? asset($product->images[0]->image_url) : asset('/assets/image-placeholder.jpg') }}" alt="Продукт">
+            </a>
         </div>
         <div class="product-info">
             <h3 class="name_card">{{ $product->name }}</h3>
