@@ -1084,8 +1084,7 @@ th button {
 }
 
 #catalog h2 {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-size: 55px;
+    font-size: 50px;
     font-weight: 800;
     line-height: 95px;
     text-align: left;
@@ -1109,7 +1108,7 @@ th button {
 .slider-item {
     width: 330px;
     min-height: 540px;
-    border: 1px solid #ABABAB;
+    border: 1px solid #A8B8B0;
 }
 
 .card {
@@ -1132,35 +1131,41 @@ th button {
 }
 
 .button-details {
-    max-width: 282px;
-    max-height: 52px;
-    background-color: #fff;
-    border: 1px solid #ABABAB;
+    font-family: 'Gothic A1';
+    color: #A8B8B0;
+    border: 1px solid #A8B8B0;
+    font-size: 15px;
     border-radius: 3px 0 0 3px;
     padding: 10px;
     margin-top: 10px;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для эффекта наведения */
 }
-
 .button-details:hover {
-    background-color: #ABABAB;
+    background-color: #A8B8B0; /* Цвет фона при наведении */
+    color: white;
 }
 
-.slider-item .button-details {
-    width: 282px;
-    height: 52px;
-    background-color: #fff;
-    border: 1px solid #ABABAB;
+.slider-item button{
+    font-family: 'Gothic A1';
+    color: #A8B8B0;
+    background-color: #ffffff;
+    border: 1px solid #A8B8B0;
+    font-size: 15px;
     border-radius: 3px 0 0 3px;
     padding: 10px;
     margin-top: 10px;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для эффекта наведения */
 }
-
+.slider-item button:hover {
+    background-color: #A8B8B0; /* Цвет фона при наведении */
+    color: white;
+}
 .slider-pagination {
     position: absolute;
     bottom: 10px;
@@ -1199,8 +1204,7 @@ th button {
 }
 
 #clothing-categories h2 {
-    font-family: 'Abhaya Libre ExtraBold';
-    font-size: 55px;
+    font-size: 50px;
     font-weight: 800;
     line-height: 95px;
     text-align: left;
@@ -1251,7 +1255,6 @@ th button {
 }
 
 #reviews h2 {
-    font-family: 'Abhaya Libre ExtraBold';
     font-size: 50px;
     font-weight: 800;
     line-height: 95px;
@@ -1259,6 +1262,31 @@ th button {
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #A8B8B0;
+}
+
+.hidden-review{
+    display: none;
+    font-size: 20px; /* Размер шрифта */
+}
+
+.read-more {
+    display: inline-block; /* Позволяет элементу вести себя как блочный элемент */
+    margin-left: 33px; /* Выравнивание по левому краю, как у текста */
+    font-family: 'Gothic A1'; /* Шрифт, совпадающий с review-text */
+    font-size: 15px; /* Размер шрифта */
+    font-weight: 700; /* Жирный шрифт */
+    color: #A8B8B0; /* Цвет текста (можете изменить на желаемый) */
+    text-decoration: none; /* Убираем подчеркивание */
+    padding: 5px 10px; /* Отступы для кнопки */
+    border: 1px solid #A8B8B0; /* Граница кнопки */
+    border-radius: 5px; /* Скругление углов */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для эффекта наведения */
+    margin-bottom: 15px;
+}
+
+.read-more:hover {
+    background-color: #A8B8B0; /* Цвет фона при наведении */
+    color: white; /* Цвет текста при наведении */
 }
 
 .review-grid {
@@ -1272,10 +1300,9 @@ th button {
 
 .review-item {
     width: 460px;
-    height: 319px;
+    height: auto; /* Изменено на auto для адаптивности */
     border: 1px solid #ccc;
     box-sizing: border-box;
-
 }
 
 .review-item img {
@@ -1284,14 +1311,14 @@ th button {
     height: 73px;
     border-radius: 50%;
     object-fit: cover;
-    margin-top: 28px
+    margin-top: 28px;
 }
 
 .review-item h3 {
     margin-bottom: 5px;
 }
 
-.review-item p{
+.review-item p {
     flex-grow: 1;
 }
 
@@ -1300,7 +1327,6 @@ th button {
     font-size: 20px;
     font-weight: 700;
     margin-left: 33px;
-
 }
 
 .review-text p {
@@ -1309,23 +1335,12 @@ th button {
     font-weight: 400;
     line-height: 24px;
     text-align: left;
-    text-underline-position: from-font;
-    text-decoration-skip-ink: none;
     margin-left: 33px;
-
 }
 
-.read-more {
-    display: block;
-    margin-top: 10px;
-    text-decoration: underline;
-    color: black;
-    margin-left: 33px;
-
-}
 
 #actions {
-    width: 100%;
+    max-width: var(--max-widht-container);
     padding: 20px;
     text-align: center;
     margin-top: 150px;
@@ -1334,14 +1349,12 @@ th button {
 #actions h2 {
     width: 987px;
     height: 89px;
-    font-family: 'Abhaya Libre ExtraBold';
-    font-size: 64px;
+    font-size: 50px;
     font-weight: 800;
     line-height: 95px;
     text-align: left;
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
-    margin-left: 265px;
     margin-bottom: 20px;
     color: #A8B8B0;
 }
@@ -1380,21 +1393,23 @@ th button {
 }
 
 .action-card .action-details {
-    width: 282px;
-    height: 52px;
-    background-color: #fff;
-    border: 1px solid #ABABAB;
+    font-family: 'Gothic A1';
+    color: #A8B8B0;
+    background-color: #ffffff;
+    border: 1px solid #A8B8B0;
+    font-size: 15px;
     border-radius: 3px 0 0 3px;
     padding: 10px;
     margin-top: 10px;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для эффекта наведения */
 }
 
-.action-item .action-details {
-
-
+.action-item .action-details:hover {
+    background-color: #A8B8B0; /* Цвет фона при наведении */
+    color: white;
 }
 
 .actions-pagination {
@@ -1519,7 +1534,7 @@ footer {
 .head-content-text p{
     font-family: var(--gotica);
     color: var(--text-color);
-    max-width: 450px;
+    font-size: 25px;
 }
 
 .head-content-image img{
@@ -1928,3 +1943,4 @@ footer {
 .foter-text-con button {
     cursor: pointer; /* Устанавливаем курсор pointer для кнопки */
 }
+
