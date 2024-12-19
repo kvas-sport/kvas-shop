@@ -224,6 +224,14 @@
             customSizeDiv.appendChild(customSizeQuantity);
             customSizesContainer.appendChild(customSizeDiv);
         });
+        form.addEventListener('submit', function (event) {
+    // Логирование данных формы перед отправкой
+    const formData = new FormData(form);
+    for (let [name, value] of formData.entries()) {
+        console.log(name, value);  // Логируем каждое поле и его значение
+    }
+});
+
 
         form.addEventListener('submit', function (event) {
     // Проверяем, если установлен чекбокс "Свои размеры"
@@ -238,22 +246,20 @@
             const customQuantity = customSizeDiv.querySelectorAll('input')[1].value.trim(); // Количество
 
             if (customName && customQuantity) {
-                // Создаем скрытое поле с именем custom_name (например, "выф") и значением custom_quantity (например, "12")
-                const sizesInput = document.createElement('input');
-                sizesInput.type = 'hidden';
-                sizesInput.name = `sizes[${customName}]`;  // Используем название характеристики как имя поля
-                sizesInput.value = customQuantity; // Значение — это количество
+                // Создаем скрытое поле с названием характеристики в качестве имени
+                const customInput = document.createElement('input');
+                customInput.type = 'hidden';
+                customInput.name = `sizes[${customName}]`;  // Используем название характеристики как имя поля
+                customInput.value = customQuantity; // Значение — это количество
 
-                form.appendChild(sizesInput); // Добавляем скрытое поле в форму
+                form.appendChild(customInput); // Добавляем скрытое поле в форму
                 
-                // Добавляем вывод в консоль для проверки
-                console.log('Создано скрытое поле:', sizesInput);
+                // Для отладки: логируем данные перед отправкой
+                console.log('Создано скрытое поле для custom_name:', customName, ' с количеством:', customQuantity);
             }
         });
     }
 });
-
-
 
 
     });
