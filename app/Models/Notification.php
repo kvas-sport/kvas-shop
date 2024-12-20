@@ -9,5 +9,5 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['message', 'created_at']; 
+    protected $fillable = ['user_id', 'message']; 
 }

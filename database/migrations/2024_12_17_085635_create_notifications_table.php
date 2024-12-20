@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // идентификатор пользователя, которому принадлежит уведомление
             $table->string('message'); 
             $table->timestamps();
         });

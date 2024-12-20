@@ -14,7 +14,8 @@
                 @csrf
                 @method('POST')
                 <input type="hidden" value="{{ Auth::id() }}" name="user_id">
-                <input type="hidden" value="{{ $product->id }}" name="product_id">
+                <input type="hidden" value="{{ $product->id }}" name="product_id">  
+                <input type="hidden" name="characteristic_id" value="{{ $product->characteristic_id }}">
                 <button type="submit" class="add-to-cart" value="1">В корзину</button>
             </form>
             <a href="{{ route('products.show', [$product->category_id, $product->id]) }}" class="more-info">Подробнее</a>

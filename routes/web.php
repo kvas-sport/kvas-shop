@@ -54,7 +54,9 @@ Route::delete('carts/{cart}', [CartController::class, 'destroy'])->name('carts.d
 
 Route::get('/profile', [UserController::class, 'profile'])->name('users.profile')->middleware('auth');
 Route::patch('/profile/{user}/update', [UserController::class, 'update'])->name('users.update')->middleware('auth');
-Route::get('/profile/notifications', [NotificationController::class, 'index'])->name('notifications.index');
+Route::get('/profile/notifications', [NotificationController::class, 'index'])->name('notifications.index')->middleware('auth');
+Route::post('/orders', [OrderController::class, 'store'])->name('orders.store'); 
+
 
 Route::get('/admin', function() {
     return view('users.admin');
