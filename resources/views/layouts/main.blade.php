@@ -69,8 +69,12 @@
                                                                      alt="profile"></a>
                         <a href="{{ route('favorites.index') }}" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/favorities.svg") }}
                                                                      alt="profile"></a>
-                        <a href="/cart" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/cart.svg") }}
-                                                                     alt="profile"></a>
+                        <a href="{{ route('carts.index') }}" class="wrapper__button-logo">
+                        <img class="button-logo" src="{{ asset('assets/cart.svg') }}" alt="Корзина"></a>
+                        <a href="{{ route('notifications.index') }}" class="wrapper__button-logo">
+    <img class="button-logo" src="{{ asset('assets/notifications.png') }}" alt="Уведомления">
+</a>
+
                     @else
                     <a href="/login" class="wrapper__button-logo"><img class="button-logo" src={{ asset("assets/entries.png") }}
                                                                  alt="profile"></a>
@@ -146,6 +150,12 @@
         </div>
     </div>
     @yield('scripts')
+    {{-- Проверяем, есть ли сообщение об успехе в сессии --}}
+    @if(session('success')) 
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 </footer>
 </body>
 </html>

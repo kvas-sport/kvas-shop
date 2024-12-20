@@ -1,7 +1,9 @@
 @foreach($products as $product)
     <div class="product-card">
         <div class="product-image">
-            <img src="{{ $product->images->isNotEmpty() ? asset($product->images[0]->image_url) : asset('/assets/image-placeholder.jpg') }}" alt="Продукт">
+            <a href="{{ route('products.show', [$product->category_id, $product->id]) }}">
+                <img src="{{ $product->images->isNotEmpty() ? asset($product->images[0]->image_url) : asset('/assets/image-placeholder.jpg') }}" alt="Продукт">
+            </a>
         </div>
         <div class="product-info">
             <h3 class="name_card">{{ $product->name }}</h3>
@@ -12,7 +14,8 @@
                 @csrf
                 @method('POST')
                 <input type="hidden" value="{{ Auth::id() }}" name="user_id">
-                <input type="hidden" value="{{ $product->id }}" name="product_id">
+                <input type="hidden" value="{{ $product->id }}" name="product_id">  
+                <input type="hidden" name="characteristic_id" value="{{ $product->characteristic_id }}">
                 <button type="submit" class="add-to-cart" value="1">В корзину</button>
             </form>
             <a href="{{ route('products.show', [$product->category_id, $product->id]) }}" class="more-info">Подробнее</a>

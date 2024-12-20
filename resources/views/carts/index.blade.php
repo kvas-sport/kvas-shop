@@ -109,6 +109,12 @@
         @else
             <span>Корзина пустая</span>
         @endif
+        {{-- Проверяем, есть ли сообщение об успехе в сессии --}}
+        @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 
     </section>
 @endsection
